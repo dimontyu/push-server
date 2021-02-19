@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+    <title>ОБЪЕКТЫ В JAVASCRIPT</title>
+  </head>
+<style>
+body{
+background-color:blue;
+
+}
+hello-h{
+background-color:red;
+}
+pre{
+color:red;
+
+}
+.ar{
+
+background-color:green;
+max-width:1700px;
+min-width:300px;
+margin-left: auto;
+margin-right: auto;
+
+}
+.ar i{
+background-color:red;
+width:10px;
+height:10px;
+
+}
+.h{
+float:right;
+margin-top:0;
+margin-right:0;
+}
+</style>
+  <body>
+    <h1>ИЗУЧЕНИЕ ОБЪЕКТОВ </h1>
+	<button class="h">vlada</button>
+	<button class="h">sveta</button>
+	<button class="h">dima</button>
+	<button class="h">olya</button>
+<main></main>	
+<script>
+ "use strict"
+  var main=document.querySelector('main');
+  
+  var b=document.querySelectorAll('.h');//create button
+  for(let bs of b)
+  bs.addEventListener('click',ggg);
+  function ggg(e){
+  
+  var removings;
+  
+  console.log(main.firstChild);
+  var quarcod=main.lastChild;
+  var quarcodq=main.firstChild;
+   //removings=(quarcod !==null)? ii.click():null;
+
+  
+  
+  
+  
+  var ar;
+  if(e.target.getAttribute('name')=='a'){return }else{
+ 
+  
+  var ii=document.createElement('i');
+   ar=(quarcod !== null)?document.createElement('article'):document.createElement('div');
+  ar.setAttribute('class','ar');
+console.log (ar.tagName)
+  ar.appendChild(ii)
+  ii.textContent='close';
+  main.appendChild(ar);
+  const inn=document.createElement('info-i');
+ const dtext=inn.setAttribute('data-text','hello dimon'); 
+ (quarcod !== null)? [quarcod.remove(),alert(ar.tagName)]:alert(ar.tagName);
+ar.appendChild(inn);
+
+/* var removings=(quarcod !==null)?quarcod.setAttribute('hidden',''):(quarcod.hidden==null)?quarcod.removeAttribute('hidden'):null; */ 
+ var br=document.querySelector('br');
+  
+  var x;
+  var arr=[];
+  var bbq=e.target.textContent;
+ var a=`[childNodes[0].textContent,childNodes[1].textContent]=['HELLO WORLD','${bbq}']`;
+ //var a=`alert(childNodes[0].textContent)`;
+  arr[0]=function(x) {return` <div onclick="${a}"><h2>${bbq}:${x}</h2>f1</div>`};
+  
+   arr[1]=function(x){return'b'+':'+x;}
+  arr[2]=function(x){return'c'+':'+x;} 
+   arr[3]=function(x){return'd'+':'+x;}
+   var c=0;
+   var jsj=[];
+ var ee=(u)=>u;
+  var colo=['red','blue','#2a78a5','white'] 
+   var j = function(arr,i,x){return arr[i](x)};
+   for(let i=0;i<=arr.length-1;i++){
+    jsj[i]=document.createElement('p')
+
+	jsj[i].setAttribute('style',`color:${ee(colo[i])}`)
+    x=x+1; 
+   x=i;
+ //var j = function(arr,i,x){return arr[i](x)}//исправить сдесь для вызова фун
+ 
+  jsj[i].innerHTML= j(arr,i,x);
+
+  ar.appendChild(jsj[i]);
+  ii.onclick=function(){ar.remove();e.target.removeAttribute('name')}//remove
+  }e.target.setAttribute('name','a')}
+  //ggg()
+  //console.log(e.target.parentNode.childNodeList === 'article')
+  //console.log(e.target.parentNode.lastChild);
+ class Info extends HTMLElement {
+	 static get observedAttributes() {
+    return ['class', 'src'];
+  } 
+	 
+  constructor() {
+    // Always call super first in constructor
+    super();
+	
+	
+const ful = document.createElement('div');
+ful.setAttribute('class', 'ful');
+
+    // Create a shadow root
+    const shadow = this.attachShadow({mode: 'open'});
+
+    // Create spans
+    const wrapper = document.createElement('span');
+    wrapper.setAttribute('class', 'wrapper');
+
+    const icon = document.createElement('span');
+    icon.setAttribute('class', 'icon');
+    icon.setAttribute('tabindex', 0);
+
+    const info = document.createElement('span');
+    info.setAttribute('class', 'info');
+var now = new Date();
+    const text = this.getAttribute('data-text');
+    info.textContent = text+now.toTimeString();
+
+    // Insert icon
+   
+  
+
+    let imgUrl;
+    if(this.hasAttribute('img')) {
+      imgUrl = this.getAttribute('img');
+    } else {
+      imgUrl ='https://lh6.googleusercontent.com/XudCHCl8TNGL7_6XPihkAgm7kvV-1CjvcVF5uNu2rH2ohZAYjDsTmzTLPZkt7sv6FbbAb2-HphVgmm35Im6atRdzBrJzaIOaVtQrv9DBttV-DBnepuV_-DzN76jeoOCiUA ';
+    }
+
+
+  
+  
+  const img1 = document.createElement('img');
+	var img2= document.createElement('img');
+	img2.setAttribute('class','img2')
+	img1.setAttribute('class','img1')
+    //img1.src = imgUrl;
+    icon.appendChild(img1);
+img1.onclick=function(){ 
+img2.style.display='block';
+img2.onclick=function(){img2.style.display='none';}
+  img2.src = imgUrl; 
+}
+    // Create some CSS to apply to the shadow dom
+    const style = document.createElement('style');
+    console.log(style.isConnected);
+
+    style.textContent = `
+      .wrapper {
+        position: relative;
+      }
+
+      .info {
+        font-size: 0.8rem;
+        width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.6s all;
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+        z-index: 3;
+      }
+
+      .img1 {
+        width: 50%;
+	cursor: zoom-in;
+      }
+.img2{
+       display:block;
+		position: absolute;
+		max-width:800px;
+		margin-top:-500px;
+		    cursor: zoom-out;
+}
+.icon{color:red;
+opacity: 1;
+}
+      
+      .icon:hover + .info, .icon:focus + .info {color:blue;
+        opacity: 1;
+      }
+	  
+    `;
+
+    // Attach the created elements to the shadow dom
+	
+    shadow.appendChild(style);
+    console.log(style.isConnected);
+	
+    shadow.appendChild(wrapper);
+    wrapper.appendChild(icon);
+    wrapper.appendChild(info);
+	wrapper.appendChild(img2);
+	}
+	connectedCallback(){
+    alert(this.shadowRoot.childNodes[1].childNodes[0].childNodes[0].tagName);
+   this.shadowRoot.childNodes[1].childNodes[0].childNodes[0].src='https://lh6.googleusercontent.com/XudCHCl8TNGL7_6XPihkAgm7kvV-1CjvcVF5uNu2rH2ohZAYjDsTmzTLPZkt7sv6FbbAb2-HphVgmm35Im6atRdzBrJzaIOaVtQrv9DBttV-DBnepuV_-DzN76jeoOCiUA ';
+ var r=new Text('HELLO RUSHUA');
+
+  this.shadowRoot.childNodes[1].childNodes[0].appendChild(r);
+  }
+  
+ }
+
+if(localStorage.getItem('info')!=='info'){
+localStorage.setItem('info','info');
+customElements.define('info-i', Info);}
+
+}
+window.onload=function(){localStorage.setItem('info','')}
+</script>
+</body>
+    
+</html>

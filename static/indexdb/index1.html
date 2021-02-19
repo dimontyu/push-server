@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+    <title>Фото хранилище</title>
+    <link href="style1.css" rel="stylesheet">
+	<link href='componentindexdb.css' rel="stylesheet">
+    
+  </head>
+  <body>
+  <a class="next" href='/'>&#10095;</a>
+<a class="prev" href="/grom">&#10094;</a> 
+ <template id='t'><h1>ВАМ ПРИШЛО СООБЩЕНИЕ</h1>
+</template>
+<span id='int'></span>
+
+<info-item></info-item> 
+  
+  
+  <div id="drop-area">
+<form id='formElem' class="my-form">
+<p>Добавить изображения перетащив сюда</p>
+<input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)" name=""  /><br><br>
+<label class="button" for="fileElem">добавьте 1 или несколько изображений</label>
+<label>Файл</label><br>
+</form>
+
+<div id='story'>
+<textarea id="storry" name="story"
+          rows="5" cols="33" placeholder="description of your beautiful photo"></textarea>
+		  </div>
+<div id="gallery"></div>
+</div>
+
+    <header>
+      <h1>Фото хранилище</h1>
+    </header>
+
+    <main>
+      <section>
+        
+      </section>
+    </main>
+
+    <footer>
+      <p>Copyright nobody. Use the code as you like.</p>
+    </footer>
+	<script type='module' src="/vebcomponents/component8.js"></script>
+	<script type='module' src="index2.js" ></script>
+	<script type='module' src="index1.js" ></script>
+	<script type='module' src="componentindexdb.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "Push notifications demo",
+  "short_name": "Push demo",
+  "description": "Demo showing the push notification API",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+	{
+      "src": "/maskable_icon.png",
+      "sizes": "253x253",
+      "type": "image/png",
+	  "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "gcm_sender_id": "982540572055",
+  "gcm_user_visible_only": true
+}

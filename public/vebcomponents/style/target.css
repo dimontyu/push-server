@@ -1,0 +1,142 @@
+/* внутренний стиль вебкомпонента info-i */
+@media screen and (max-width: 800px){
+ .wrapper {
+        position: relative;
+      }
+	  
+	  .wrapperB {
+		     color: white;
+    font-size: 1.8rem;
+    position: absolute;
+    width: 90px;
+    height: 40px;
+    background-color: black;
+	top: 50%;
+    right: 0;
+      }
+	  .wrapperBL {
+    color: white;
+    font-size: 1.8rem;
+    position: absolute;
+    width: 90px;
+    height: 40px;
+    background-color: black;
+    right: 0px;
+}	 
+
+      .info {
+        font-size: 0.8rem;
+      max-width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: blue;
+        border-radius: 10px;
+        opacity: 0.5;
+        transition: 0.6s all;
+       /*  position: absolute; */
+        bottom: 20px;
+        left: 10px;
+        /* z-index: 3; */
+		
+      }
+
+      .img1 {
+        width: 16.2rem;
+	cursor: zoom-in;
+      }
+.img2{
+	position:absolute;
+       max-width: 400px;
+    margin-top: -60%;
+    cursor: zoom-out;
+    z-index: 2;
+    margin-left: -10%;
+		
+}
+      
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+}
+
+
+.textB{
+width:50px;
+height:50px;
+right:0;
+top:0;
+color:red;
+position: absolute;
+border-radius: 50% ;
+background-color:white;
+font-size: 1.5rem;
+text-align:center;
+}
+
+@media screen and (min-width: 800px){
+ .wrapper {
+        position: relative;
+      }
+	 .wrapperB {
+		 
+		  color:white;
+		font-size: 0.8rem;
+        position: absolute;
+		width:50px;
+		height:20px;
+		background-color:black;
+		top: 50%;
+    right: 0;
+      }
+
+.wrapperBL {
+    color: white;
+    font-size: 0.8rem;
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background-color: black;
+    right: 0px;
+}	  
+	  
+	  
+	  
+	  
+
+      .info {
+        font-size: 0.8rem;
+      max-width: 200px;
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        background: blue;
+        border-radius: 10px;
+        opacity: 0.5;
+        transition: 0.6s all;
+       /*  position: absolute; */
+        bottom: 20px;
+        left: 10px;
+        /* z-index: 3; */
+		
+      }
+
+      .img1 {
+        width: 15.2rem;
+	cursor: zoom-in;
+      }
+.img2{
+	position:absolute;
+      max-width: 400px;
+    margin-top: -60%;
+    cursor: zoom-out;
+    z-index: 2;
+    margin-left: -10%; 
+		
+}
+      
+      .icon:hover + .info, .icon:focus + .info {
+        opacity: 1;
+      }
+}
+

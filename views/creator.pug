@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+    
+<link rel="icon" href="/images/pic1.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width">
+<meta name="Description" content="составитель нового контента">
+<title>составитель нового контента</title>
+		
+<link href="/grid.css" rel="stylesheet" type="text/css" />
+<link href="/dropimg.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div><svg hidden preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380--icon-1f8349b3"><g><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></g></svg></div>
+
+<div id='avtor'>
+<p id='user'>#{user}</p>
+</div>
+ 
+
+<div class="container">
+<div id="menu"><i>close</i><p id="menu0" class="menu">создать статью</p><p id="menu1"class="menu">отправить исправленную</p><p id="menu2" class="menu">DELETE</p><p id="menu3" class="menu">CLS</p><p id="b" class="menu"><a href="/admin" style='text-decoration:none'>create PUSH</a></p> <p class="menu"><a href="/grom" style='text-decoration:none'>Перейти обратно на сайт</a><p id="menu4" class="menu">IMGCREATE</p> 
+
+<ul>
+            each doc in docs
+                <li class='menu' id='#{doc._id}' data-descr='#{doc.aws.length}'>#{doc.h1} <br> автор: #{doc.name}</li>
+</ul>
+
+</div>
+
+
+
+<header id="headera"><textarea id="head" placeholder='общие черты'></textarea></header>
+
+<article>
+<h1 id="h1a"><textarea  id='h1text' placeholder='об авторе' ></textarea></h1>
+<textarea id="pa" placeholder='содержание статьи'></textarea>
+
+               
+</article>
+<aside><textarea id="h2a" placeholder='об фото'></textarea>
+<div class="full-img">
+
+<div id="drop-area">
+<form class="my-form"  action="/uploadaws/#{user}" method="POST" enctype="multipart/form-data">
+<p>Добавить изображения перетащив сюда</p>
+<input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)" name="#{user}"/><br><br>
+<label class="button" for="fileElem">добавьте 1 или несколько изображений</label>
+<label>Файл</label><br>
+
+<input id='imginput'   type="submit" value="Send" style='display:none' />
+<button id='imgvalue' value="Загрузить" style='display:none'>загрузить изображение</button>
+
+</form>
+<progress id="progress-bar" max=100 value=0></progress>
+<div id="gallery"></div>
+</div>
+
+</div>
+
+<div class="thumb-bar">
+<button id = 'imgdelete' name='' style='display:none'>удалить изображение</button>
+
+</div>  </aside>
+ <footer><p>адрес электронной почты <strong> dima.chernyshev.1976@mail.ru</strong></p><p>гугл почта <strong>dmitrijcernysev784@gmail.com</strong> </p>
+</footer>
+</div>
+<script src="/m.js"></script>
+<script src="/create.js"></script>
+
+ 
+</body>
+
+</html>

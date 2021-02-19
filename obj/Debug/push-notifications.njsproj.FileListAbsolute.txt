@@ -1,0 +1,2 @@
+C:\Users\DNS\source\repos\push-server\push-notifications\obj\Debug\push-notifications.njsprojAssemblyReference.cache
+C:\Users\DNS\source\repos\push-server\push-notifications\bin\Microsoft.NodejsTools.WebRole.dll

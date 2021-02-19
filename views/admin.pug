@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ADMINISTRATOR</title>
+<link href="css/admin.css" rel="stylesheet" />
+</head>
+
+<body>
+<a class="next" href="/grom">&#10095;</a>
+<a class="prev" onclick='history.back()'>&#10094;</a> 
+<span id='int'></span>
+<div class= 'container'>
+<h1>отправить пуш</h1>
+<div class='cont1'>
+
+<p class="z"><a href="/grom">Главная</a></p>
+<p class="z"><a href="/">L page</a></p>
+<p class="z"><a id='z' href="/creator">creator</a></p>
+</div>
+<div class='cont2'>
+<ul>
+<h2>список клиентов</h2>
+            each doc in docs
+                <li class='menu' id='#{doc._id}' >#{doc.name}</li>
+</ul>
+</div>
+<div class='cont3'>
+<div id="formElem" name="registerForm" >
+<div>
+<label for="name">Name:</label>
+<input type="text" id="name" name="">
+</div>
+<div>
+<label for="title">TITLE:</label>
+<input type="text" id="title" name="usertitle">
+</div>
+<div>
+<label for="msg">Message:</label>
+<textarea id="msg" name="userbody"></textarea>
+</div>
+<div class="button">
+<button class="btn">ОТПРАВИТЬ</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script type='text/javascript' src='/admin.js'></script>
+<script type='module' src="/vebcomponents/component8.js"></script>
+
+</html>
