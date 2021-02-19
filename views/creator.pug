@@ -46,9 +46,9 @@
 
 <div id="drop-area">
 <form class="my-form"  action="/uploadaws/#{user}" method="POST" enctype="multipart/form-data">
-<p>Добавить изображения перетащив сюда</p>
+<p>Добавить изображения предварительно выбрав статью</p>
 <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)" name="#{user}"/><br><br>
-<label class="button" for="fileElem">добавьте 1 или несколько изображений</label>
+<label class="button" for="fileElem">добавьте 1 изображение</label>
 <label>Файл</label><br>
 
 <input id='imginput'   type="submit" value="Send" style='display:none' />

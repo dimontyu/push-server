@@ -259,7 +259,7 @@ var userid=localStorage.getItem('useridd');
 	h1texti = h1text.value;  //название статьи
 	h2texti = h2text.value; //описание фото
 	patexti = patext.value; //содержание статьи 
-	nameImg = localStorage.getItem('inputimgname');//имя и путь к файлу img
+	//nameImg = localStorage.getItem('inputimgname');//имя и путь к файлу img
     postData('PUT','/api/images/', {
         id: userid,
        // images: '/'+nameImg+'.jpg',
@@ -268,7 +268,7 @@ var userid=localStorage.getItem('useridd');
 		h1: h1texti,
 		h2: h2texti,
 		p: patexti
-    }).then(function(){return submform()});
+    }).then(function(data){return submform()});
 
   
 }
