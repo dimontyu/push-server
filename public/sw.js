@@ -79,7 +79,7 @@ self.addEventListener('install', function (event) {
 
 //раздвоение стратегии выборки файлов в зависимости navigator.onLine состояния сети
  self.addEventListener('fetch', function (event) {
-	 if(navigator.onLine !==false){
+	 if(navigator.onLine ==false){
 	 let request = new Request('/');
 	request = event.request;
 	let rr=request.url;
@@ -110,7 +110,7 @@ self.addEventListener('install', function (event) {
 	 }else{let request = event.request; let rr=request.url;  if (  request.method !== 'GET') return;  event.respondWith(
     caches.match(event.request).then(function (response) {
 		
-		return response=(!response||(request.url==('http://localhost/grom')||('http://localhost/')))?fetch(event.request):response ; 
+		return response=(!response||(request.url==('https://shielded-journey-11426.herokuapp.com/grom')||('https://shielded-journey-11426.herokuapp.com/')))?fetch(event.request):response ; 
     }).catch(function (response) {
 			
 			return caches.match('/');
