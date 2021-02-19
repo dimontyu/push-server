@@ -13,10 +13,10 @@ for(var i = 1; i <= n; i++) {
 
   var newImage = document.createElement('img');
  
-  newImage.setAttribute('src', urlimg + i + '.jpg');
+  newImage.setAttribute('src', urlimg + i + '.JPG');
 newImage.setAttribute('id',  'n');
   thumbBar.appendChild(newImage);
- displayedImage.setAttribute('src', urlimg + 1 + '.jpg'); 
+ displayedImage.setAttribute('src', urlimg + 1 + '.JPG'); 
   newImage.onclick = function(e) {
     var imgSrc = e.target.getAttribute('src');
     displayImage(imgSrc);

@@ -47,7 +47,7 @@ self.addEventListener('install', function (event) {
 	'/indexdb/index2.js',
 	'/indexdb/index1.js',	
 	'/indexdb/style1.css',
-	'/images/g1.jpg',
+	'/images/g1.JPG',
 	 'img/alt.png',
 	 '/android-chrome-192x192.png',
 	 "/maskable_icon.png",
