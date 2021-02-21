@@ -113,7 +113,7 @@ self.addEventListener('install', function (event) {
 		return response=(!response||(request.url==('https://shielded-journey-11426.herokuapp.com/grom')||('https://shielded-journey-11426.herokuapp.com/')))?fetch(event.request):response ; 
     }).catch(function (response) {
 			
-			return caches.match('/');
+			return caches.match(event.request)||caches.match('/images1/default.jpg');
 			
 		}),
   )}
