@@ -1,8 +1,7 @@
 {
   "name": "photo chat room",
   "short_name": "photo chat",
-  "description": "Demo showing the push notification API,
-servise worker.",
+  "description": "Demo showing the push notification API,servise worker",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
