@@ -30,8 +30,8 @@
 <div id="menu"><i>close</i><p class="menu" id="h" name=''><a href="/grom">supeuser</a></p>
 <p class="menu" id="registration"><a href="/input">registration</a></p>
 <p id="menu1"class="menu"><a href="/admin" style='text-decoration:none'>create PUSH</a></p>
-<p id="b" class="menu"><a href="/indexdb/index1.html">INDEXDB2</a></p>
-<p class="menu" id="create">update SW</p><p class="menu" id="nocreate">delete SW</p>
+<p id="b" class="menu"><a href="/indexdb/index1.html">FotoNOTEPAD</a></p>
+<p class="menu" id="create">update SW</p><p class="menu" id="nocreate" data-descr='ОСТОРОЖНО НЕ НАЖИМАТЬ!!!используеться для обновления,сначала нажмите на эту кнопку потом на update sw верхнюю' >delete SW</p>
 <ul>
             each doc in docs
                 <li class='menu' id='#{doc._id}' data-descr='#{doc.aws.length}'> #{doc.h1}  <br>автор:#{doc.name}<button class='dblclickmenu' data-name='#{doc.name}' data-header='#{doc.header}' data-p='#{doc.p}' data-h1='#{doc.h1}' data-h2='#{doc.h2}' data-images='#{doc.aws}'>info</button></li>

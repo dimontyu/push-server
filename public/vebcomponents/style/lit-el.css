@@ -127,7 +127,11 @@ position:sticky;
 
 /*узкий экран*/
 
-@media screen and (max-width: 500px)  { 
+@media screen and (max-width: 500px)  {
+
+#nocreate,#create{display:none;}
+
+	
   .container { 
     margin:20px; 
 	
@@ -312,13 +316,34 @@ font-size:17px;
  /*  content: " <- создать новую статью"; */
   color: red;
 }	
-	.clickmenu{
+	li.clickmenu{
 	 margin: 10px;
 	background-color:#de00ff;
 	border-radius: 5px;
 	width: auto;
 	padding:5px;
-}	
+}
+
+button.clickmenu,.dblclickmenu{
+	 margin-right: 150px;
+	background-color:#00f3ff;
+	border-radius: 5px;
+	width: auto;
+	padding:5px;
+}
+button.clickmenu{
+	 margin-right: 50px;
+	background-color:#de00ff;
+	border-radius: 5px;
+	width: auto;
+	padding:5px;
+}
+#nocreate:hover::after{
+content: attr(data-descr);	
+	
+}
+
+
 #imgvalue:hover{background-color:#de00ff; }	
 
 
@@ -364,7 +389,7 @@ svg{z-index:1;}
 	z-index:1;
    background-color:blue;
   position:absolute;  }
-  .clickmenu::marker{
+  li.clickmenu::marker{
 	content:"activ"attr(data-descr);
 	color:red;
 }

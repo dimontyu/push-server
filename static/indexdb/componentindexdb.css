@@ -55,6 +55,26 @@
 		z-index: 1;
       }
 .info,#int p {
+	font-size: 1.8rem;
 	padding:20px;
 }
+#int p:hover,#int p:focus{
+background-color:red;	
+}
+
+
+#int i {
+	font-size: 1.8rem;
+	width:15%;
+	height:10%;
+    background-color: red;
+    float: right;
+    margin-right: 70px;
+}
+
+
+
+
+
+
 		  }
