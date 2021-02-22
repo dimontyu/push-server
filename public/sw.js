@@ -234,7 +234,7 @@ self.addEventListener('notificationclick', function (event) {
 			
 
 			return self.clients.openWindow('/').then(function(windowClient){
-				
+				let ddDat={title:'pizdec',body:'error',agent:'urod'};
 				
 				windowClient.postMessage(notificationData);}).catch(function (error,windowClient,ddDat) {
 					//let ddDat={title:'pizdec',body:error,agent:'urod'};
