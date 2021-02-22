@@ -234,10 +234,10 @@ self.addEventListener('notificationclick', function (event) {
 			
 
 			return self.clients.openWindow('/').then(function(windowClient){
-				let ddDat={title:'pizdec',body:'error',agent:'urod'};
 				
-				windowClient.postMessage(notificationData);}).catch(function (error,windowClient,ddDat) {
-					//let ddDat={title:'pizdec',body:error,agent:'urod'};
+				//console.log(windowClient);
+			if(windowClient)windowClient.postMessage(notificationData);}).catch(function (error,windowClient) {
+					let ddDat={title:'pizdec',body:'error',agent:'urod'};
 					windowClient.postMessage(ddDat);
 				console.error('error registering new service worker version', error);
 			});//при щелчке на уведомление открыть окно вебстраницы
