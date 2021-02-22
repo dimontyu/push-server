@@ -63,7 +63,8 @@ import {html, render} from '../lit-html/lit-html.js'
 headerbot.style.display= 'block';
  var header=(event.data.body);
  var headertitle=(event.data.title);
- var headername=(event.data.agent)
+ var headername=(event.data.agent);
+   if(!headertitle) {alert('ERROR');}
 //wigit=(event.data.body)
   //console.log(event.data.msg, event.data.url);
   console.log(event.data)

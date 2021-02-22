@@ -154,7 +154,7 @@ self.addEventListener('activate', function (event) {
 
 
 
-let notificationData = {};
+var notificationData = {};
 
 
 
@@ -233,7 +233,7 @@ self.addEventListener('notificationclick', function (event) {
 			}
 			
 
-			return self.clients.openWindow('/').then(function (client) {client.postMessage(notificationData);});//при щелчке на уведомление открыть окно вебстраницы
+			return self.clients.openWindow('/').then(function(windowClient){windowClient.postMessage(notificationData);});//при щелчке на уведомление открыть окно вебстраницы
 
 		})
 	);
