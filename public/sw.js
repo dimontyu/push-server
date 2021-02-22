@@ -154,16 +154,17 @@ self.addEventListener('activate', function (event) {
 
 
 
-
+let notificationData = {};
 
 
 
 self.addEventListener('push', function (event) {
 
-	let notificationData = {};
+	//let notificationData = {};
 
 	try {
 		notificationData = event.data.json();
+		//qrq = event.data.json();
 		//console.log(notificationData)
 	 event.waitUntil(async function() {
     const allClients = await clients.matchAll({
@@ -192,7 +193,7 @@ self.addEventListener('push', function (event) {
 
     // Message the client:
 	console.log(myFocused)
-    chatClient.postMessage(notificationData);
+  if(myFocused) { chatClient.postMessage(notificationData);}return;
   }());	
 		
 		
@@ -218,8 +219,9 @@ self.addEventListener('push', function (event) {
 
 });
 
-self.addEventListener('notificationclick', function (event) {
 
+self.addEventListener('notificationclick', function (event) {
+	
 	// close the notification
 	event.notification.close();	// otherwise open new tab
 	event.waitUntil(
@@ -231,7 +233,7 @@ self.addEventListener('notificationclick', function (event) {
 			}
 			
 
-			return self.clients.openWindow('/');//при щелчке на уведомление открыть окно вебстраницы
+			return self.clients.openWindow('/').then(function (client) {client.postMessage(notificationData);});//при щелчке на уведомление открыть окно вебстраницы
 
 		})
 	);

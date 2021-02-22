@@ -61,7 +61,8 @@ import {html, render} from '../lit-html/lit-html.js'
  
  navigator.serviceWorker.addEventListener('message', event => {
 headerbot.style.display= 'block';
- var header=(event.data.body)
+ var header=(event.data.body);
+ var headertitle=(event.data.title);
  var headername=(event.data.agent)
 //wigit=(event.data.body)
   //console.log(event.data.msg, event.data.url);
@@ -82,7 +83,7 @@ const clickHandler = {
 <h1>ВАМ ПРИШЛО СООБЩЕНИЕ ОТ ${headername} </h1><i  
 @click=${clickHandler}>close</i>
 <span class="icon" tabindex="0"><img class="img1i" src='/img/alt.png'></span>
-<span class="info">${header}</span><span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
+<span class="info">${header}</span><span class="info">${headertitle}</span><span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
 `, headerbot)
 });
 
