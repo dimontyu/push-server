@@ -1,5 +1,5 @@
 "use strict";
-
+importScripts('/indexdbrequest.js'); //<- storePush(notificationData )записываеt push-message  в INDEXDB
 const VERSION = 'v0.0.5';
 
 
@@ -25,7 +25,7 @@ self.addEventListener('install', function (event) {
 				"vebcomponents/style/target.css",
 				"vebcomponents/lit-el.js",
 				"vebcomponents/component.mjs",
-				
+				'/indexdbrequest.js',
 				"vebcomponents/cmp.mjs",
 				
 				"vebcomponents/component8.js",
@@ -192,7 +192,8 @@ self.addEventListener('push', function (event) {
    
 
     // Message the client:
-	console.log(myFocused)
+	storePush(notificationData );//записываем сообщения в INDEXDB
+	console.log(myFocused);
   if(myFocused) { chatClient.postMessage(notificationData);}return;
   }());	
 		
@@ -218,7 +219,7 @@ self.addEventListener('push', function (event) {
 	);
 
 });
-
+let ddDat={title:'pizdec',body:'error',agent:'urod'};
 
 self.addEventListener('notificationclick', function (event) {
 	
@@ -234,10 +235,10 @@ self.addEventListener('notificationclick', function (event) {
 			
 
 			return self.clients.openWindow('/').then(function(windowClient){
-				
 				//console.log(windowClient);
-			if(windowClient)windowClient.postMessage(notificationData);}).catch(function (error,windowClient) {
-					let ddDat={title:'pizdec',body:'error',agent:'urod'};
+				let messeg=(notificationData!=='undefined'||notificationData!==null)?notificationData:ddDat;
+			if(windowClient)windowClient.postMessage(messeg);}).catch(function (error,windowClient) {
+					
 					windowClient.postMessage(ddDat);
 				console.error('error registering new service worker version', error);
 			});//при щелчке на уведомление открыть окно вебстраницы

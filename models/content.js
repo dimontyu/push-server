@@ -13,4 +13,9 @@ images:[String],
 aws:[String]
 });
 
+
+
+
+
+
 module.exports = mongoose.model('Content', ContentSchema);

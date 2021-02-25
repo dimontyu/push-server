@@ -9,6 +9,7 @@
         height:300px;
 		opacity: 1;
 		z-index: 1;
+		overflow: auto;
       }
 	  #int i {
     background-color: red;
@@ -48,18 +49,88 @@ a{font-size:1em;
 	cursor: zoom-in;
       }
 </style>  `;
- 
+
+var eu=html`<style>
+ #ipt i {
+	 display:block;
+	 position:fixed;
+    background-color: red;
+    float:right;
+	margin-right:70px;
+	z-index: 3;
+}
+</style> `;
  
  
  let headerbot=document.querySelector('#int');
-
+let he=document.querySelector('#ipt');
 import {html, render} from '../lit-html/lit-html.js'
+
+
+function history(){
+	
+const clickHandler = {
+  // handleEvent method is required.
+  handleEvent(e) { 
+  headerbot.style.display= 'none';
+ he.style.display= 'none'; 
+  },
+  
+  capture: true,
+};	
+	
+	
+	
+	
+
+	
+headerbot.style.display= 'block';
+he.style.display= 'block';
+var db;
+const dbName = "SWdb";
+const A=[];
+var request = indexedDB.open(dbName);
+
+request.onerror = function(event) {
+  alert("ху из ху IndexedDB?!");
+};
+
+request.onsuccess = function(event){
+	console.log('OK');
+	
+	
+db = request.result;		
+let prequest=db.transaction("customers").objectStore("customers").getAllKeys();
+prequest.onsuccess = function() {
+let items =prequest.result ;
+ 
+      
+ for(let i of items){ let request = db.transaction("customers").objectStore("customers").get(i);
+
+ request.onsuccess = function(){ 
+let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.body,request.result.body.title,request.result.ssn];
+ console.log(request.result.body.body);    
+A.push(html`<img class="icon" src='/img/alt.png'>
+ <span class="info" >сообщение от :${aa}</span>
+ <span class="info">${bb}</span>
+ <span class="info">${ee}</span>
+ <span class="info">${dd}</span>`);return render(html`${ui} ${A}`,headerbot),render(html`${eu}  <i @click=${clickHandler}>close</i><div> `,he)  	}};
+ 
+}      
+}
+}
+
+
+
 
 
 
  
  
  navigator.serviceWorker.addEventListener('message', event => {
+ 
+ 
+ 
 headerbot.style.display= 'block';
  var header=(event.data.body);
  var headertitle=(event.data.title);
@@ -73,21 +144,27 @@ const clickHandler = {
   handleEvent(e) { 
   headerbot.style.display= 'none';  
   },
-  // event listener objects can also define zero or more of the event 
-  // listener options: capture, passive, and once.
+  
   capture: true,
 };
+
+
+
+
+
  
  return render( html`
  ${ui}
   
-<h1>ВАМ ПРИШЛО СООБЩЕНИЕ ОТ ${headername} </h1><i  
-@click=${clickHandler}>close</i>
+<h1>ВАМ ПРИШЛО СООБЩЕНИЕ ОТ ${headername} </h1>
+<i @click=${clickHandler}>close</i><div> 
+  <i @click=${history} >history 1</i>
+  
+</div>
 <span class="icon" tabindex="0"><img class="img1i" src='/img/alt.png'></span>
 <span class="info">${header}</span><span class="info">${headertitle}</span><span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
 `, headerbot)
 });
-
 
 
 
