@@ -4,13 +4,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+    <meta name="viewport" content="width=device-width">	
 <div class="container">
 <div class="row">
 <div class="col-sm-6 col-md-4 col-md-offset-4">
 <h1 class="text-center login-title">Registration Details</h1>
 </div></div>
 <div class="signup-wall">
-<form class="form-signin" action="/signup" method="POST"><input class="form-control" type="text" name="username" placeholder="Username" required="required" autofocus="autofocus" />
+<form class="form-signin" action="/signup" method="POST"><input class="form-control" type="text" name="username" placeholder="Ваш логин без заглавных букв" required="required" autofocus="autofocus" />
 <input class="form-control nomargin" type="password" name="password" placeholder="Password" required="required" />
 <input class="form-control"type="email" name="email" placeholder="Email" required="required" />
 <input class="form-control" type="text" name="firstName" placeholder="First Name" required="required" />
