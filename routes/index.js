@@ -11,7 +11,7 @@ router.get('/creator/:name', function (req, res) {
 	let ename= req.params.name;
 	 Content.find({name:ename}, function (err, users){
 	
-    res.render('creator',{user:req.param('name'),docs:users});
+    res.render('creator',{user:ename,docs:users});
 	 });
 });
 

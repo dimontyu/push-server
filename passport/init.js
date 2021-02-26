@@ -9,14 +9,14 @@ module.exports = function(passport){
 //Паспорт должен иметь возможность сериализации и десериализации пользователей для поддержки постоянных сеансов входа в систему.
 	
     passport.serializeUser(function(user, done) {
-        console.log('serializing user: ');console.log(user);
+       /*  console.log('serializing user: ');console.log(user); */
         done(null, user._id);
     });
 
     passport.deserializeUser(function(id, done) {
 		
       User.findById(id, function(err, user) {
-            console.log('deserializing user:',user);
+            /* console.log('deserializing user:',user); */
             done(err, user);
         });   
             

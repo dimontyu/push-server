@@ -34,8 +34,8 @@ let promt=async function(req,res,x,next){
  	
 })
 x=null;
-res.end(data);
-politicaws(bucketName);
+//res.end(data);//fix
+politicaws(req,res,bucketName);
 })
 }).catch(
   function(err) {
@@ -64,7 +64,7 @@ var storage = multer.memoryStorage({
 
 
 
-router.post('/uploadaws/:name/:id/:bucketname', async(req, res,next) => {
+router.post('/uploadaws/:name/:id/:bucketname',(req, res,next) => {
 	var name=req.params.name;
 
 let upload = multer({ storage: storage }).single(name);
@@ -87,15 +87,16 @@ let upload = multer({ storage: storage }).single(name);
         }
 		
 	
-		res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
-	const x=Buffer.from(req.file.buffer);
-	console.log(req.file.buffer);
+		//res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
+	//const x=Buffer.from(req.file.buffer);
+	let x=req.file.buffer;
+	console.log(x);
 	promt(req,res,x);
-	
-	;})
+	req.file.buffer=null;
+	})
 });
 //функция устанавливающая политику корзины
-async function politicaws(bucketName){
+async function politicaws(req,res,bucketName){
 	var readOnlyAnonUserPolicy = {
   Version: "2012-10-17",
   Statement: [
@@ -124,7 +125,8 @@ s3.putBucketPolicy(bucketPolicyParams, function(err, data) {
     // display error message
     console.log("Error", err);
   } else {
-    console.log("Success", data);
+    console.log("Success", data);//res.end(data);
+	res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
   }
 });
 //next();
