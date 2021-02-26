@@ -246,7 +246,8 @@ let myformaction = myform.getAttribute('action');//установить акти
  
  var imgcreate = document.querySelector('#menu4');//кнопка IMGCREATE в меню
  
- var imgpost = async function subm() {
+ var imgpost = async function subm(e) {
+	 e.preventDefault();
 //let gallery = document.querySelector('#gallery');
 //if(gallery.src !==undefined)
 
@@ -268,15 +269,15 @@ var userid=localStorage.getItem('useridd');
 		h1: h1texti,
 		h2: h2texti,
 		p: patexti
-    }).then(function(data){return submform()});
-
-  
+    }).then(function(data){return submform()}); 
+ 
+   //setTimeout(submform, 3000);   //submform();
 }
 
 imgcreate.addEventListener('click', imgpost);//событие отправки изображения из меню
 imgvalue.addEventListener('click', imgpost);//отправка изображения из формы
 
-async function submform(){ return inputimg.click();} //функция нажимающая на кнопку формы изображений
+ function submform(){ return inputimg.click();} //функция нажимающая на кнопку формы изображений
 
 fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
 
