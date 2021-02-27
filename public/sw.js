@@ -205,6 +205,7 @@ self.addEventListener('push', function (event) {
 		
 	} catch (e) {
 		notificationData = {
+			agent:'krakenes',
 			title: 'Default title',
 			body: 'Default message',
 			icon: '/default-icon.png'
@@ -212,7 +213,7 @@ self.addEventListener('push', function (event) {
 	}
 
 	event.waitUntil(
-		self.registration.showNotification(notificationData.title, {
+		self.registration.showNotification("Сообщение от"+"🟢"+notificationData.agent+'⚽'+notificationData.title, {
 			body: notificationData.body,
 			icon: notificationData.icon
 		})

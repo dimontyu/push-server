@@ -68,8 +68,8 @@ const clickHandler = {
  return render( html`
  
   
-<h1>ВЫБЕРИТЕ КУДА ОТПРАВИТЬ ${headername} </h1><i  
-@click=${clickHandler}>close</i>
+<h1>ВЫБЕРИТЕ КУДА ОТПРАВИТЬ ${headername}</h1>
+<i @click=${clickHandler}>close</i>
 <span class="icon" tabindex="0"><img class="img1i" src=${blobs}></span>
 
 

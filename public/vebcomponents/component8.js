@@ -5,11 +5,12 @@
 		  position:fixed;
 		  display:block;
 		  background-color:blue;
-		max-width:300px;
+		max-width:360px;
         height:300px;
 		opacity: 1;
 		z-index: 1;
 		overflow: auto;
+		
       }
 	  #int i {
     background-color: red;
@@ -27,10 +28,11 @@ a{font-size:1em;
 	text-decoration:none;
 	color:white;
 	}
+	.info:hover{background:#cd66c5e0;}
       .info {
 		  display:flex;
         font-size: 0.8rem;
-        width: 200px;
+        max-width:360px;
         
         border: 1px solid black;
         padding: 10px;
@@ -38,6 +40,7 @@ a{font-size:1em;
         border-radius: 10px;
         opacity: 1;
         transition: 0.6s all;
+		
         
         bottom: 20px;
         left: 10px;
@@ -108,13 +111,16 @@ let items =prequest.result ;
  for(let i of items){ let request = db.transaction("customers").objectStore("customers").get(i);
 
  request.onsuccess = function(){ 
-let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.body,request.result.body.title,request.result.ssn];
- console.log(request.result.body.body);    
+let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.title,request.result.body.body,request.result.ssn];
+ //console.log(request.result.body.body);    
 A.push(html`<img class="icon" src='/img/alt.png'>
  <span class="info" >сообщение от :${aa}</span>
  <span class="info">${bb}</span>
  <span class="info">${ee}</span>
- <span class="info">${dd}</span>`);return render(html`${ui} ${A}`,headerbot),render(html`${eu}  <i @click=${clickHandler}>close</i><div> `,he)  	}};
+ <span class="info">${dd}</span>`);
+ return render(html`${ui} ${A}`,headerbot),
+ render(html`${eu}  <i @click=${clickHandler}>close</i><div> `,he)  	}
+ };
  
 }      
 }
@@ -135,9 +141,8 @@ headerbot.style.display= 'block';
  var header=(event.data.body);
  var headertitle=(event.data.title);
  var headername=(event.data.agent);
-   if(!headertitle) {alert('ERROR');}
-//wigit=(event.data.body)
-  //console.log(event.data.msg, event.data.url);
+   /* if(!event.data) {alert('ERROR');} */
+
   console.log(event.data)
 const clickHandler = {
   // handleEvent method is required.
@@ -157,12 +162,13 @@ const clickHandler = {
  ${ui}
   
 <h1>ВАМ ПРИШЛО СООБЩЕНИЕ ОТ ${headername} </h1>
-<i @click=${clickHandler}>close</i><div> 
-  <i @click=${history} >history 1</i>
-  
-</div>
-<span class="icon" tabindex="0"><img class="img1i" src='/img/alt.png'></span>
-<span class="info">${header}</span><span class="info">${headertitle}</span><span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
+<i @click=${clickHandler}>close</i>
+<div><i @click=${history} >history 1</i></div>
+<span class="icon" tabindex="0">
+<img class="img1i" src='/img/alt.png'></span>
+<span class="info">${headertitle}</span>
+<span class="info">${header}</span>
+<span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
 `, headerbot)
 });
 

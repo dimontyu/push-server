@@ -132,7 +132,5 @@ objectStore.createIndex("txtindex", "txtindex", { unique: false });
   export {displayVideo} 
   
 
-  // Setup the database tables if this has not already been done ;  Настраиваем таблицы базы данных, если это еще не было сделано
-
-//};
+ 
  

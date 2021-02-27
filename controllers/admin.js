@@ -31,7 +31,7 @@ if (err) {
  const payload = JSON.stringify({
             agent:agent,	 
 	        name: name,
-            title: title+' '+name+' от  '+agent,
+            title: title,
             body: body,
             icon: '/android-chrome-192x192.png'
         });
