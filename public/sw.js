@@ -12,9 +12,7 @@ self.addEventListener('install', function (event) {
 				'/grom',
 				'/manifest.json',
 				'/grid.css',
-				 '/content.json',
-				'/content1.json',
-				'/content2.json',
+				
 				'images/wood.jpg',
 				'images/cam.jpg',
 				'images/pic1.ico',

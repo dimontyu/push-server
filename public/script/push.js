@@ -21,8 +21,8 @@ let inputname=document.querySelector('#name');
 localStorage.setItem('name',nametext);}
 
 
-function gsav(callback){ inputname.textContent = inp.value;  sav() };
-gsav(callback);
+function gsav(){ inputname.textContent = inp.value;  sav() };
+gsav();
 
 function urlB64ToUint8Array(base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);

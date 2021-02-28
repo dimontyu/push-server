@@ -6,25 +6,9 @@ var overlay = document.querySelector('.overlay');
 //var bb = document.querySelector('#b');
 var body = document.querySelector('body');
 /* адрес и количество файлов images */
-function zipImage(urlimg,n){
-	
 
-for(var i = 1; i <= n; i++) {
-
-  var newImage = document.createElement('img');
- 
-  newImage.setAttribute('src', urlimg + i + '.JPG');
-newImage.setAttribute('id',  'n');
-  thumbBar.appendChild(newImage);
- displayedImage.setAttribute('src', urlimg + 1 + '.JPG'); 
-  newImage.onclick = function(e) {
-    var imgSrc = e.target.getAttribute('src');
-    displayImage(imgSrc);
-  }
-}
-}
 //УСТАНОВКИ ПЕРВОНАЧАЛЬНОГО КОНТЕНТА ПРИ ЗАГРУЗКЕ
-window.onload=function fmu(inputname){if(inputname == undefined){return ;}else{clear(callback,urljson0,urlimg0,n0);localStorage.setItem("k",f=0);let names=localStorage.getItem('name');// name береться из push.js
+window.onload=function fmu(inputname){if(inputname == undefined){return ;}else{localStorage.setItem("k",f=0);let names=localStorage.getItem('name');// name береться из push.js
 inputname.textContent =names;}};
  
 
@@ -50,19 +34,9 @@ var ul=	displayedImage.getAttribute('src');
     overlay.style.display = 'none';
   }
 }
-//var x='content.json';
-function clear(callback,urljson,urlimg,n){
-	
-	var ssel=document.querySelectorAll('#n');
 
-	for(var i = 1; i <= ssel.length; i++){
-	s=+i;
-if(s!==0)
-	ssel[s-1].remove();
-  displayedImage.removeAttribute('src');}
-callback(urljson,urlimg,n)}
 
-function callback(urljson,urlimg,n){fn(urljson,urlimg,n)}//все это для для статичного просмотра из кэша
+
 
 let header=document.querySelector('#headera');
 let h1=document.querySelector('#h1a');
@@ -75,43 +49,7 @@ let next=document.querySelector(".next");
 let prev=document.querySelector(".prev");
 
 
- function fn(urljson,urlimg,n){   
- fetch(urljson).then(function(response) {
-   return  response.json().then(function(json) {
-var headerj=json.header;
-var h1j=json.h1;
-var h2j=json.h2;			  
-var pj=json.p;				  
-				  
-header.textContent='';			
- header.insertAdjacentText('afterbegin',headerj);
-h1.textContent='';			
- h1.insertAdjacentText('afterbegin',h1j);
-h2.textContent='';			
- h2.insertAdjacentText('afterbegin',h2j); 
- p.textContent='';			
- p.insertAdjacentText('afterbegin',pj);           
-			  
-              });
-          });
-		 
-		  zipImage(urlimg,n);
-		  }	
-
-
-function fmy(e){clear(callback,urljson2,urlimg2,n2);};
-
- function fy(e){clear(callback,urljson1,urlimg1,n1);};
- var urlimg0='images/g';
- var urlimg1='images/pic';
- var urlimg2='images2/a';
- var n0=10;
- var n1=5;
- var n2=20;
- var urljson0='content2.json';
-var urljson1='content.json';
-var urljson2='content1.json';
-
+ 
 svg.addEventListener('click',fsvg);
 menu.addEventListener('click',fnsvg);
 //svg.addEventListener('click',dravsvg);
