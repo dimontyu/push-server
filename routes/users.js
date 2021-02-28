@@ -31,7 +31,8 @@ const x=(req.params.id!==null||req.params.id!==undefined)?req.params.id:'5ea01f0
     Content.findOne({ _id: id }, function (err, user) {
 
         if (err) return console.log(err);
-        res.send(user);console.log(user);
+        res.send(user);
+		//console.log(user);
     });
 });
 

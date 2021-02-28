@@ -28,14 +28,13 @@ let promt=async function(req,res,x,next){
       function(data) {
 		  let	newContent={"$push":{aws:ss}};
 		  Content.findOneAndUpdate({ _id:uid  }, newContent, { new: true }, function (err, user) {
-        if (err) return console.log(err);
-       //res.send(user);
-	//res.send();
- 	
+        if (err){return console.log(err);}
+       console.log(user.aws[1]);  let pix=(user.aws[1]!==undefined);
+ 	politicaws(req,res,bucketName,pix);
 })
 x=null;
 //res.end(data);//fix
-politicaws(req,res,bucketName);
+//politicaws(req,res,bucketName);
 })
 }).catch(
   function(err) {
@@ -96,7 +95,11 @@ let upload = multer({ storage: storage }).single(name);
 	})
 });
 //функция устанавливающая политику корзины
-async function politicaws(req,res,bucketName){
+async function politicaws(req,res,bucketName,pix){
+	
+	if(pix==true) {res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");}
+	else{
+	
 	var readOnlyAnonUserPolicy = {
   Version: "2012-10-17",
   Statement: [
@@ -129,7 +132,7 @@ s3.putBucketPolicy(bucketPolicyParams, function(err, data) {
 	res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
   }
 });
-//next();
+	}
 }
 
 

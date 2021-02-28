@@ -110,7 +110,8 @@ let items =prequest.result ;
       
  for(let i of items){ let request = db.transaction("customers").objectStore("customers").get(i);
 
- request.onsuccess = function(){ 
+ request.onsuccess = function(){
+//aa:юсер агент сообщения,bb:заголовок сообщения,ee:тело сообщения,dd:дата сообщения.	 
 let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.title,request.result.body.body,request.result.ssn];
  //console.log(request.result.body.body);    
 A.push(html`<img class="icon" src='/img/alt.png'>
