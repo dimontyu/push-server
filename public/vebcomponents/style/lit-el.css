@@ -9,7 +9,7 @@
 			background-attachment: fixed;
         }
 		
-		ul{overflow:auto}
+		/* ul{overflow:auto} */
 		textarea{font-size:18px;}
 		
 		#in{display:inline-block;
@@ -95,15 +95,17 @@ border: 3px solid #00ff93;}
 
 
 .menu {
+	
 	 margin: 10px;
 	background-color:blue;
 	border-radius: 5px;
 	width: auto;
 	padding:5px;
 	}
+	
 
  #menu{
-
+color: white;
 position:sticky;
    grid-column: 3 / 4;
   grid-row: 1/3; 
@@ -113,7 +115,7 @@ position:sticky;
   background-color:#0000ff59;
  max-height:60%;
  overflow-y: scroll;
-
+width: fit-content;
   }
 
 
@@ -382,7 +384,8 @@ span[data-descr]:focus::after {
 
 
 svg{z-index:1;}
-	a{text-decoration: none;}
+	a{text-decoration: none;
+	color:white;}
 	
 	
 	info-item{margin-top:80px;

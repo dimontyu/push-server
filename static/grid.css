@@ -464,7 +464,11 @@ height:250px;
 
 
 svg{z-index:1;}
-	a{text-decoration: none;}
+	a{text-decoration: none;
+	color:white;
+	
+	}
+	.menu{color:white;}
 	
 	
 	info-item{margin-top:80px;
@@ -478,4 +482,8 @@ svg{z-index:1;}
 .menu::marker{
 	content:"("attr(data-descr)")";
 }
-
+.avimg,.avatar{
+margin-top:0px;	
+	
+	
+}

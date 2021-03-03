@@ -64,7 +64,7 @@ var eu=html`<style>
 }
 </style> `;
  
- 
+ let pmsg=document.querySelector('#pmsg');
  let headerbot=document.querySelector('#int');
 let he=document.querySelector('#ipt');
 import {html, render} from '../lit-html/lit-html.js'
@@ -92,6 +92,7 @@ he.style.display= 'block';
 var db;
 const dbName = "SWdb";
 const A=[];
+
 var request = indexedDB.open(dbName);
 
 request.onerror = function(event) {
@@ -114,20 +115,23 @@ let items =prequest.result ;
 //aa:юсер агент сообщения,bb:заголовок сообщения,ee:тело сообщения,dd:дата сообщения.	 
 let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.title,request.result.body.body,request.result.ssn];
  //console.log(request.result.body.body);    
-A.push(html`<img class="icon" src='/img/alt.png'>
+A.unshift(html`
+
  <span class="info" >сообщение от :${aa}</span>
  <span class="info">${bb}</span>
  <span class="info">${ee}</span>
  <span class="info">${dd}</span>`);
- return render(html`${ui} ${A}`,headerbot),
- render(html`${eu}  <i @click=${clickHandler}>close</i><div> `,he)  	}
+ 
+ return render(html`${ui}<h1>последние сообщения</h1>
+ <i @click=${clickHandler}>close</i>
+ <img class="icon" src='/img/alt.png'> ${A}`,headerbot)  	}
  };
  
 }      
 }
 }
 
-
+  if(pmsg!=undefined||pmsg!=null) { pmsg.addEventListener('click',function(){ return history()});}
 
 
 
@@ -141,8 +145,9 @@ A.push(html`<img class="icon" src='/img/alt.png'>
 headerbot.style.display= 'block';
  var header=(event.data.body);
  var headertitle=(event.data.title);
- var headername=(event.data.agent);
-   /* if(!event.data) {alert('ERROR');} */
+ var headername=(event.data.agent).toUpperCase();
+ 
+ 
 
   console.log(event.data)
 const clickHandler = {
@@ -162,7 +167,7 @@ const clickHandler = {
  return render( html`
  ${ui}
   
-<h1>ВАМ ПРИШЛО СООБЩЕНИЕ ОТ ${headername} </h1>
+<h1>Вам пришло сообщение от <b style="color:red">${headername}</b> </h1>
 <i @click=${clickHandler}>close</i>
 <div><i @click=${history} >history 1</i></div>
 <span class="icon" tabindex="0">

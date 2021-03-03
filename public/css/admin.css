@@ -89,7 +89,7 @@ background-color:#00e1ff;
 	padding:5px;
 }	
 
-
+.menu{color:white;}
 
 
 
@@ -144,6 +144,17 @@ button {
 	font-size:20px;
 	color:red;
 	text-decoration:none;
+	background-color:aqua;
+}
+
+#pmsg {
+	font-size:20px;
+	color:white;
+	
+}
+ #pmsg:hover{
+	font-size:20px;
+	color:red;
 	background-color:aqua;
 }
 
