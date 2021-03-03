@@ -46,7 +46,13 @@ a{font-size:1em;
         left: 10px;
         z-index: 3;
       }
-
+.space{
+display:flex;
+max-width:360px;
+background:#ffffff75 ;
+padding: 20px;
+transition: 0.6s all;
+}
       .img1i {
         width: 100px;
 	cursor: zoom-in;
@@ -120,7 +126,9 @@ A.unshift(html`
  <span class="info" >сообщение от :${aa}</span>
  <span class="info">${bb}</span>
  <span class="info">${ee}</span>
- <span class="info">${dd}</span>`);
+ <span class="info">${dd}</span>
+ <span class="space"></span>
+ `);
  
  return render(html`${ui}<h1>последние сообщения</h1>
  <i @click=${clickHandler}>close</i>
