@@ -182,7 +182,7 @@ const clickHandler = {
 <img class="img1i" src='/img/alt.png'></span>
 <span class="info">${headertitle}</span>
 <span class="info">${header}</span>
-<span class="info"><a href='/admin'>ОТВЕТИТЬ</a></span>
+<span class="info"><a href='/admin#${headername}'>ОТВЕТИТЬ</a></span>
 `, headerbot)
 });
 

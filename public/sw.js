@@ -174,8 +174,8 @@ self.addEventListener('push', function (event) {
     // Let's see if we already have a chat window open:
     for (const client of allClients) {
       const url = new URL(client.url);
-
-      if (url.pathname == '/'||url.pathname == '/grom'||url.pathname == '/admin'||url.pathname=='/indexdb/index1.html') {
+const hash=url.hash;
+      if (url.pathname == '/'||url.pathname == '/grom'||url.pathname == '/admin'||url.pathname=='/indexdb/index1.html'||url.pathname == `/admin${hash}`) {
         // Excellent, let's use it!
         //client.focus();
 		

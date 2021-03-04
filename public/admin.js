@@ -60,12 +60,24 @@ icon: '/android-chrome-192x192.png'  }),cb();
 btn.onclick=a;
 let pushname = document.querySelectorAll('.menu');
 for(let i of pushname)
-	i.onclick=function(e){
+	i.addEventListener('click',function(e){
 	var pushid=e.target.getAttribute('id')
   userName.setAttribute('name',pushid);	
 	userName.value =e.target.textContent ;	
-	}
+	})
 //для обработки сообщений	
 /* navigator.serviceWorker.addEventListener('message', (event) => {
     console.log('Received a message from service worker: ', event.data);
   });	 */
+  
+ var pushh=document.location.hash;console.log(pushh)
+ var pushid;
+ let hr;
+  pushname.forEach(function(userItem) {
+	   hr='#'+userItem.textContent;
+ if( hr==pushh.toLowerCase()){userItem.click();
+  pushid=userItem.getAttribute('id');
+ userName.setAttribute('name',pushid);	
+ userName.value =userItem.textContent ;}
+ 
+}) 
