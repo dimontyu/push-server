@@ -47,7 +47,7 @@ module.exports = function(passport){
 	/* GET Home Page */
 	router.get('/grom', isAuthenticated, function(req, res){
 		Content.find({}, function (err, users){
-		res.render('grom', { user: req.user.username,docs:users
+		res.render('grom', { user: req.user.username,docs:users.sort()
  });
 		});
 	});

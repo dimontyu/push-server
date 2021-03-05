@@ -32,7 +32,7 @@ var f=req.get('sec-ch-ua-mobile');	//если не undefined ||'?0' значит
 var fn=req.get( 'user-agent');//обнаружить устройство пользователя и его операционная система
 var fm=req.get( 'sec-fetch-user');//если не undefined ||'1' значит это мобильник
 		Content.find({}, function (err, users){
-		res.render('lit-el', { docs:users});
+		res.render('lit-el', { docs:users.sort()});
 		});
 console.log(req.headers.cookie,f,fn,fm)	});
 

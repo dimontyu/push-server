@@ -31,7 +31,7 @@ a{font-size:1em;
 	.info:hover{background:#cd66c5e0;}
       .info {
 		  display:flex;
-        font-size: 0.8rem;
+        font-size: 1.1rem;
         max-width:360px;
         
         border: 1px solid black;
@@ -120,13 +120,17 @@ let items =prequest.result ;
  request.onsuccess = function(){
 //aa:юсер агент сообщения,bb:заголовок сообщения,ee:тело сообщения,dd:дата сообщения.	 
 let [aa,bb,ee,dd]=[request.result.body.agent,request.result.body.title,request.result.body.body,request.result.ssn];
- //console.log(request.result.body.body);    
+ //console.log(request.result.body.body);
+const str = `${dd}`; 
+const words = str.split(' '); 
+const wordspush=words[2]+'. '+words[3]+'. '+words[4];
+
 A.unshift(html`
 
- <span class="info" >сообщение от :${aa}</span>
+ <span class="info" style='color:white;font-size: 1.2rem' >сообщение от <p style='width:30px;'></p>  <b style="color:#1bff00;font-size: 1.8rem;">   ${aa}</b> </span>
  <span class="info">${bb}</span>
  <span class="info">${ee}</span>
- <span class="info">${dd}</span>
+ <span class="info">${wordspush}</span>
  <span class="space"></span>
  `);
  
