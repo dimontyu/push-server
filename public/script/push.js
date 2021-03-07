@@ -44,8 +44,10 @@ function updatePushButton() {
 
     if (hasSubscription) {
         pushButton.textContent = `Отключить уведомления`;
+		localStorage.setItem('push','notif');
     } else {
         pushButton.textContent = `Подписаться на уведомления`;
+		localStorage.setItem('push','not');
     }
 }
 
@@ -123,7 +125,10 @@ function initPush() {
 
     pushButton.addEventListener('click', function () {
         if (hasSubscription) {
-            unsubscribeUser();
+			if (window.confirm("Вы действительно хотите отписаться от уведомлений???")) {return
+ unsubscribeUser();
+}
+            
         } else {
             subscribeUser();
         }

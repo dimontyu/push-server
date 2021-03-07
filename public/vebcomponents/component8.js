@@ -76,6 +76,32 @@ let he=document.querySelector('#ipt');
 import {html, render} from '../lit-html/lit-html.js'
 
 
+function pushstory(){
+headerbot.style.display= 'block';	
+const clickHandler = {
+  // handleEvent method is required.
+  handleEvent(e) { 
+  headerbot.style.display= 'none';
+ he.style.display= 'none'; 
+  },
+  
+  capture: true,
+};	
+
+
+return render(html`${ui}<h1>Подпишитесь на уведомления</h1>
+ <i @click=${clickHandler}>close</i>
+ <img class="icon" src='/img/alt.png'> `,headerbot)
+
+
+}
+
+
+
+
+
+
+
 function history(){
 	
 const clickHandler = {
@@ -109,8 +135,12 @@ request.onsuccess = function(event){
 	console.log('OK');
 	
 	
-db = request.result;		
+db = request.result;
+
+
 let prequest=db.transaction("customers").objectStore("customers").getAllKeys();
+
+
 prequest.onsuccess = function() {
 let items =prequest.result ;
  
@@ -139,13 +169,14 @@ A.unshift(html`
  <img class="icon" src='/img/alt.png'> ${A}`,headerbot)  	}
  };
  
-}      
-}
 }
 
-  if(pmsg!=undefined||pmsg!=null) { pmsg.addEventListener('click',function(){ return history()});}
-
-
+}
+/* if(err){alert('Подпишитесь на уведомления!!!')} */
+}
+var control=localStorage.getItem('push');
+  if((pmsg!=undefined||pmsg!=null)&& control=='notif') { pmsg.addEventListener('click',function(){ return history()});}
+if((pmsg!=undefined||pmsg!=null)&& (control=='not'||control=='undefined')) { pmsg.addEventListener('click',function(){ return pushstory()});}
 
 
  
@@ -157,7 +188,7 @@ A.unshift(html`
 headerbot.style.display= 'block';
  var header=(event.data.body);
  var headertitle=(event.data.title);
- var headername=(event.data.agent).toUpperCase();
+ var headername=(event.data.agent)?(event.data.agent).toUpperCase():'YOU Notification';
  
  
 

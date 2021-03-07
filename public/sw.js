@@ -53,6 +53,10 @@ self.addEventListener('install', function (event) {
 				])
 		})
 	);
+	
+	
+	
+	
 });
 
  function redir (url) {

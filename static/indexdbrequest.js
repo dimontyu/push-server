@@ -1,8 +1,7 @@
 
 "use strict";
 function storePush(notificationData ) {
-console.log(notificationData.body)	
-	
+
 var db;
 const dbName = "SWdb";
 
@@ -71,7 +70,7 @@ request.onerror = function(event) {
 request.onsuccess = function(event) {
 	db = request.result;
   console.log("успех IndexedDB!");
-  store(notificationData );
+ store(notificationData );
   let prequest=db.transaction("customers").objectStore("customers").getAllKeys();
  prequest.onsuccess = function() {
   let a=prequest.result;  let areslength=a.length;
@@ -86,3 +85,11 @@ if(a.length>10){
 };
 
 }
+/* let nnotificationData = {
+			agent:'krakenes',
+			title: 'Default title',
+			body: 'Default message',
+			icon: '/default-icon.png'
+		};
+
+storePush(nnotificationData ); */
