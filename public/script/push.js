@@ -86,6 +86,9 @@ let names=localStorage.getItem('name');
 }
 
 function unsubscribeUser() {
+	if(window.confirm("Вы действительно хотите отписаться от уведомлений???"))
+	
+	
     serviceWorkerRegistration.pushManager.getSubscription()
         .then(function (subscription) {
             if (subscription) {
@@ -125,9 +128,9 @@ function initPush() {
 
     pushButton.addEventListener('click', function () {
         if (hasSubscription) {
-			if (window.confirm("Вы действительно хотите отписаться от уведомлений???")) {return
+			
  unsubscribeUser();
-}
+
             
         } else {
             subscribeUser();
