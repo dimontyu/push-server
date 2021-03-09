@@ -30,7 +30,7 @@ let promt=async function(req,res,x,next){
 		  Content.findOneAndUpdate({ _id:uid  }, newContent, { new: true }, function (err, user) {
         if (err){return console.log(err);}
        console.log(user.aws[1]);  let pix=(user.aws[1]!==undefined);
- 	politicaws(req,res,bucketName,pix);
+ 	politicaws(req,res,bucketName,pix,user);
 })
 x=null;
 //res.end(data);//fix
@@ -95,9 +95,9 @@ let upload = multer({ storage: storage }).single(name);
 	})
 });
 //функция устанавливающая политику корзины
-async function politicaws(req,res,bucketName,pix){
+async function politicaws(req,res,bucketName,pix,user){
 	
-	if(pix==true) {res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");}
+	if(pix==true) {res.send(user);}
 	else{
 	
 	var readOnlyAnonUserPolicy = {
@@ -129,7 +129,7 @@ s3.putBucketPolicy(bucketPolicyParams, function(err, data) {
     console.log("Error", err);
   } else {
     console.log("Success", data);//res.end(data);
-	res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
+	res.send(user);
   }
 });
 	}

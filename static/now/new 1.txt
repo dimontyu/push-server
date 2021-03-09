@@ -10,9 +10,28 @@ var deletebtn = document.querySelector("#menu2");
 var clsbtn = document.querySelector("#menu3");
 var imgdelete = document.querySelector("#imgdelete");
 var imgvalue = document.querySelector("#imgvalue");
-let activate = false;
-//SERVER DELETE IMG
 
+//SERVER DELETE IMG
+function delimg(e){ var tumbler =e.target.getAttribute('class');// функция удаляем выбранное изображение
+var f=e.target.getAttribute('name');
+   if(tumbler=='images'&& f== undefined){ e.target.style.width='50%';  e.target.setAttribute('name','big'); 
+   imgdelete.addEventListener('click',function(e){return imgdeleted(uid,classimg)});
+ var uid = localStorage.getItem('useridd');	
+ 
+var classimg=e.target.getAttribute('id'); imgdelete.style.display='block'; imgdelete.setAttribute('name',classimg);
+}else{e.target.style.width='28%';e.target.removeAttribute('name');imgdelete.style.display='none';}
+}
+  
+ async function imgdeleted(uid,classimg){//alert(uid+'  ' +classimg)
+
+ postData('PUT',"/api/imagesdel", {
+		id:uid,
+         images:classimg
+    });
+
+
+
+} 
 //AWS DELETE IMG
   
 function delimgaws(e){ var tumbler =e.target.getAttribute('class');// функция удаляем выбранное изображение
@@ -39,7 +58,7 @@ let bucketname=localStorage.getItem('name');
 
  for (let i of litext)
 i.onclick= async function fun(e) {
-activate = true;	
+	
 	let targetclass = e.target.getAttribute('class');
 	if (targetclass == 'clickmenu'){ return e.preventDefault();
             } else{
@@ -80,7 +99,21 @@ localStorage.setItem('useridd',uid);
 		document.querySelector('.thumb-bar').appendChild(imgaws);
 		imgaws.addEventListener('click',function(e){return delimgaws(e)})
 		}
+		for (let i of mimg){
+		//var zimg = json.images[i];
+		var zimg = i;
+		var img = new Image();
 		
+		
+		img.src ='/images/'+ zimg ;
+		var thumbbar = document.querySelector('.thumb-bar');
+		img.setAttribute('id',zimg);
+		img.setAttribute('class','images');
+		
+		
+		thumbbar.appendChild(img);
+		img.addEventListener('click',function(e){return delimg(e)})//событие выьрать и удалить изображение^| fynction delimg()
+		}
         headtext.value = zhead;
 		h1text.value = zh1;
 		h2text.value = zh2;
@@ -111,15 +144,12 @@ async function postData(xx,url = '', data = {}) {
 		
             console.log(data)
         }
-    }).then((data) => { clear(); });
-	//return response.json();
-	 //let json=await response.json(); console.log('успех',json.h1); //УБРАТЬ ОБЕ КОММЕНТИРОВАНИЕ ПОСЛЕ ТЕСТА!!!
-    
-       
+    })
+	.then((data) => { console.log('успех');clear(); //УБРАТЬ ОБЕ КОММЕНТИРОВАНИЕ ПОСЛЕ ТЕСТА!!!
+        
+       });
    
 }
-
-
 var a = async function () {
 
     usertexti = usertext.textContent;  //имя автора
@@ -133,14 +163,14 @@ var a = async function () {
 		h1: h1texti,
 		h2: h2texti,
 		p: patexti
-    }).then(data => {
-    console.log(data._id); 
-  });
-
+    });
+       // .then((data) => {
+        //    p.textContent = data; // JSON data parsed by `response.json()` call
+      //  });
 }
 
 
-var b = async function () {if(activate){
+var b = async function () {
 var userid=localStorage.getItem('useridd');// извлекаем id статьи из localStorage и вставляем в put запрос на сервер
     usertexti = usertext.textContent;  //имя автора
     headtexti = headtext.value;  //описание содержимого статьи
@@ -158,31 +188,28 @@ var userid=localStorage.getItem('useridd');// извлекаем id статьи
        // .then((data) => {
         //    p.textContent = data; // JSON data parsed by `response.json()` call
       //  });
-}else{return}
 }
-var c = async function () {if(activate){
+var c = async function () {
 var userid=localStorage.getItem('useridd');
   
     postData('DELETE','/api/users/'+userid );
 	let elem = document.getElementById(userid);
-     elem.parentNode.removeChild(elem);
-}else{return}	 
+     elem.parentNode.removeChild(elem); 
 }
-function clear(){  //headtext.value=null;  //описание содержимого статьи
-	 //h1text.value=null;  //название статьи
-	 //h2text.value=null; //описание фото
-	 //patext.value=null; //содержание
+function clear(){  headtext.value=null;  //описание содержимого статьи
+	 h1text.value=null;  //название статьи
+	 h2text.value=null; //описание фото
+	 patext.value=null; //содержание
 	 var img=document.querySelectorAll('img');//удаляем содержимое и обновляем страницу
 	
 	if(img[0] !==undefined) {img[0].remove();}//удаляем фото
-	//window.location.reload(); 
-
+	window.location.reload(); 
 }
 
 
-postbtn.onclick = a; //создать новую статью
-putbtn.onclick = b;//сохранить изменения в статье
-deletebtn.onclick = c;//удалить статью
+postbtn.onclick = a; 
+putbtn.onclick = b;
+deletebtn.onclick = c;
 clsbtn.addEventListener('click',clear); //кнопка очистить поля
 
 let svg=document.querySelector('svg');
@@ -219,7 +246,7 @@ let myformaction = myform.getAttribute('action');//установить акти
  
  var imgcreate = document.querySelector('#menu4');//кнопка IMGCREATE в меню
  
- var imgpost = async function subm(e) {if(activate){
+ var imgpost = async function subm(e) {
 	 e.preventDefault();
 //let gallery = document.querySelector('#gallery');
 //if(gallery.src !==undefined)
@@ -228,7 +255,6 @@ let myformaction = myform.getAttribute('action');//установить акти
 	 //отправляет изображение в статью 
 	 //submform();//эмуляция нажатия кнопки формы
 var userid=localStorage.getItem('useridd');
-
  usertexti = usertext.textContent;  //имя автора
     headtexti = headtext.value;  //описание содержимого статьи
 	h1texti = h1text.value;  //название статьи
@@ -243,90 +269,19 @@ var userid=localStorage.getItem('useridd');
 		h1: h1texti,
 		h2: h2texti,
 		p: patexti
-    }).then(function(data){return f()}); 
+    }).then(function(data){return submform()}); 
  
- } else{f();}
+   //setTimeout(submform, 3000);   //submform();
 }
 
-function actionpost(e){let x=localStorage.getItem('useridd');    if(x==('undefined'||null)){
-e.preventDefault();
-e.stopPropagation();
-alert("сначала создайте статью ")}else{imgpost}
-}
+imgcreate.addEventListener('click', imgpost);//событие отправки изображения из меню
+imgvalue.addEventListener('click', imgpost);//отправка изображения из формы
 
-//imgcreate.addEventListener('click',imgpost);//событие отправки изображения из меню
-imgvalue.addEventListener('click',imgpost);//отправка изображения из формы
-/* imgcreate.addEventListener('click',actionpost);//событие отправки изображения из меню
-imgvalue.addEventListener('click',actionpost);//отправка изображения из формы */
  function submform(){ return inputimg.click();} //функция нажимающая на кнопку формы изображений
 
 fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
-///////
-function f(){const formData = new FormData(myform);
-const photos =fileElem;
-const u= fileElem.getAttribute('name');
-const uri=myform.getAttribute('action');
-
-
-fetch(uri, {
-  method: 'POST',
-  body: formData,
-})
-.then(response => response.json())
-.then(result => {
-  console.log('Success:', result);
-  document.getElementById('myform').reset();
-  
-   var imgg=document.querySelectorAll('img');
-	for(let i of imgg)
-	if(i !==undefined) {i.remove();}
-  
-var json = result;
-        var zhead = json.header;
-        var zh1 = json.h1;
-		var zh2 = json.h2;
-        var zp = json.p;
-		var mimg = json.images;//изображение из aws
-		var aws = json.aws;
-		for (let iu of aws){
-		
-			var qui=iu.split('/');
-			var zimg=qui[qui.length-1];
-			console.log(zimg);
-		var imgaws = new Image();
-		imgaws.src=iu;
-		imgaws.setAttribute('class','images');
-		imgaws.setAttribute('id',zimg);
-		imgaws.setAttribute('aws',iu);
-		imgaws.style.borderColor='blue';imgaws.style.borderWidth='5px';
-		document.querySelector('.thumb-bar').appendChild(imgaws);
-		imgaws.addEventListener('click',function(e){return delimgaws(e)})
-		}
-		
-        headtext.value = zhead;
-		h1text.value = zh1;
-		h2text.value = zh2;
-		patext.value = zp;  
-  
-  })
-.catch(error => {
-  console.error('Error:', error);
-})}
-imgcreate.addEventListener('click',f)
-
-////
 
 
 
-
-
-
-
-
-
-window.onload=function(){   if(litext[0].id !==('undefined'||null))
-{localStorage.setItem('useridd',litext[0].id)}else
-localStorage.setItem('useridd',null)}
-	
-	
+//window.onload=function(){return clsbtn.click();}
 	

@@ -33,19 +33,19 @@
 
 
 
-<header id="headera"><textarea id="head" placeholder='общие черты'></textarea></header>
+<header id="headera"><textarea id="head" placeholder='название статьи'></textarea></header>
 
 <article>
-<h1 id="h1a"><textarea  id='h1text' placeholder='об авторе' ></textarea></h1>
+<h1 id="h1a"><textarea  id='h1text' placeholder='заголовок статьи' ></textarea></h1>
 <textarea id="pa" placeholder='содержание статьи'></textarea>
 
                
 </article>
-<aside><textarea id="h2a" placeholder='об фото'></textarea>
+<aside><textarea id="h2a" placeholder='имя фото устанавливаеться автоматически' hidden></textarea>
 <div class="full-img">
 
 <div id="drop-area">
-<form class="my-form"  action="/uploadaws/#{user}" method="POST" enctype="multipart/form-data">
+<form  id='myform'  class="my-form"  action="/uploadaws/#{user}" method="POST" enctype="multipart/form-data">
 <p>Добавить изображения предварительно выбрав статью</p>
 <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)" name="#{user}"/><br><br>
 <label class="button" for="fileElem">добавьте 1 изображение</label>

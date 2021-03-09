@@ -358,10 +358,7 @@ background-repeat: no-repeat  ;
 	padding:5px;
 }
 
-#menu0:hover::after {
-  content: " <- доступно только админу";
-  color: red;
-}	
+
 
 #registration:hover::after {
   content: " <- зарегистрируйтесь или войдите в свой аккаунт";
