@@ -245,14 +245,14 @@ let myformaction = myform.getAttribute('action');//установить акти
  
  var imgcreate = document.querySelector('#menu4');//кнопка IMGCREATE в меню
  
- var imgpost = async function subm(e) {if(activate){
+ var imgpost = async function subm(e) {var userid=localStorage.getItem('useridd');     if(activate&&(userid!=='undefined')){
 	 e.preventDefault();
 
 
 
 	 //отправляет изображение в статью 
 	 
-var userid=localStorage.getItem('useridd');
+
 
  usertexti = usertext.textContent;  //имя автора
     headtexti = headtext.value;  //описание содержимого статьи
@@ -287,7 +287,9 @@ imgvalue.addEventListener('click',imgpost);//отправка изображен
 //fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
 ///////
 function f(){
-	//e.preventDefault();
+	let uid=localStorage.getItem('useridd');
+	if(uid==null||uid=='undefined'){ alert('создайте статью');return;}
+	else{
 	
 	const formData = new FormData(myform);
 const photos =fileElem;
@@ -308,7 +310,7 @@ fetch(uri, {
 	for(let i of imgg)
 	if(i !==undefined) {i.remove();}
 	
-let uid=localStorage.getItem('useridd');	
+	
  let j=document.getElementById(uid);console.log(j)
 	j.dataset.descr=+j.dataset.descr+1; 
 var json = result;
@@ -341,7 +343,7 @@ var json = result;
   })
 .catch(error => {
   console.error('Error:', error);
-})}
+})}}
 imgcreate.addEventListener('click',f);
 //inputimg.addEventListener('click',submform);
 ////
@@ -354,9 +356,9 @@ imgcreate.addEventListener('click',f);
 
 
 
-/* window.onload=function(){   if((litext[0].id !==('undefined'||null))||litext[0]!=='undefined')
+window.onload=function(){   if(litext[0])
 {localStorage.setItem('useridd',litext[0].id)}else
-localStorage.setItem('useridd',null)} */
+	{localStorage.setItem('useridd','undefined')}}
 	
 	
 	
