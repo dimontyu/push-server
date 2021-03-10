@@ -226,7 +226,7 @@ function fsvg(){var cc=menu.style.display;
  
 function fnbody(){if(client > "600") return  menu.style.display="block"; }
 
-let inputimg = document.querySelector('#imginput');//инпут элемент с кнопкой submit
+//let inputimg = document.querySelector('#imginput');//инпут элемент с кнопкой submit
 let fileElem = document.querySelector('#fileElem');//инпут элемент формы
 let myform = document.querySelector('.my-form');//форма
 
@@ -247,12 +247,11 @@ let myformaction = myform.getAttribute('action');//установить акти
  
  var imgpost = async function subm(e) {if(activate){
 	 e.preventDefault();
-//let gallery = document.querySelector('#gallery');
-//if(gallery.src !==undefined)
+
 
 
 	 //отправляет изображение в статью 
-	 //submform();//эмуляция нажатия кнопки формы
+	 
 var userid=localStorage.getItem('useridd');
 
  usertexti = usertext.textContent;  //имя автора
@@ -271,7 +270,7 @@ var userid=localStorage.getItem('useridd');
 		p: patexti
     }).then(function(data){return f()}); 
  
- } else{f();}
+ } else{e.preventDefault();     f();}
 }
 
 function actionpost(e){let x=localStorage.getItem('useridd');    if(x==('undefined'||null)){
@@ -344,7 +343,7 @@ var json = result;
   console.error('Error:', error);
 })}
 imgcreate.addEventListener('click',f);
-inputimg.addEventListener('click',submform);
+//inputimg.addEventListener('click',submform);
 ////
 
 

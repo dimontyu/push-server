@@ -383,7 +383,7 @@ background-repeat: no-repeat  ;
 	 margin: 10px;
 	background-color:blue;
 	border-radius: 5px;
-	width: auto;
+	width: fit-content;
 	padding:5px;
 	}
  @media screen and (min-width: 500px){ 	
