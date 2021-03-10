@@ -34,7 +34,9 @@ background-color:#00e1ff;
   justify-content: space-around;
  grid-column: 1;
   grid-row: 3; 
- background-color:#00beff;	
+ background-color:#00beff;
+overflow-y: scroll;
+    max-height: 300px; 
 }
 .cont3{
 	grid-column:1;
@@ -63,7 +65,9 @@ background-color:#00e1ff;
 .cont2{
  grid-column: 3 / 4;
   grid-row: 1/4; 
- background-color:#00beff;	
+ background-color:#00beff;
+overflow-y: scroll;
+    max-height: 700px; 
 }
 .cont3{
 	grid-column:2;
