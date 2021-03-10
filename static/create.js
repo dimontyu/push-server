@@ -18,19 +18,28 @@ let activate = false;
 function delimgaws(e){ var tumbler =e.target.getAttribute('class');// функция удаляем выбранное изображение
 var f=e.target.getAttribute('name');
    if(tumbler=='images'&& f== undefined){ e.target.style.width='50%';  e.target.setAttribute('name','big'); 
-   imgdelete.addEventListener('click',function(e){return imgdeletedaws(uid,classimg,awsurl)});
+   imgdelete.addEventListener('click',function(e){return imgdeletedaws(e,uid,classimg,awsurl)});
  var uid = localStorage.getItem('useridd');	
  
 var classimg=e.target.getAttribute('id');var awsurl=e.target.getAttribute('aws'); imgdelete.style.display='block'; imgdelete.setAttribute('name',classimg);
 }else{e.target.style.width='28%';e.target.removeAttribute('name');imgdelete.style.display='none';}
 }
   
- async function imgdeletedaws(uid,classimg,awsurl){//alert(uid+'  ' +classimg)
+ async function imgdeletedaws(e,uid,classimg,awsurl){
 let bucketname=localStorage.getItem('name');
  postData('PUT',"/awsinput/"+classimg+"/"+bucketname, {
 		id:uid,
          aws:awsurl
-    });
+    }).then((data)=>{console.log(document.getElementById(classimg)),document.getElementById(classimg).remove()
+	let j=document.getElementById(uid);console.log(j)
+	j.dataset.descr=j.dataset.descr-1;
+	
+	
+	
+	
+	}//удаляем содержимое и обновляем страницу
+	
+	);
 
 
 
@@ -111,8 +120,8 @@ async function postData(xx,url = '', data = {}) {
 		
             console.log(data)
         }
-    }).then((data) => { clear(); });
-	//return response.json();
+    })/* .then((data) => { clear(); }); */
+	return response.json();
 	 //let json=await response.json(); console.log('успех',json.h1); //УБРАТЬ ОБЕ КОММЕНТИРОВАНИЕ ПОСЛЕ ТЕСТА!!!
     
        
@@ -120,6 +129,14 @@ async function postData(xx,url = '', data = {}) {
 }
 
 
+
+
+
+
+
+
+
+//создать новую статью
 var a = async function () {
 
     usertexti = usertext.textContent;  //имя автора
@@ -134,12 +151,12 @@ var a = async function () {
 		h2: h2texti,
 		p: patexti
     }).then(data => {
-    console.log(data._id); 
+    window.location.reload(); 
   });
 
 }
 
-
+//сохранить изменения в статье
 var b = async function () {if(activate){
 var userid=localStorage.getItem('useridd');// извлекаем id статьи из localStorage и вставляем в put запрос на сервер
     usertexti = usertext.textContent;  //имя автора
@@ -154,28 +171,37 @@ var userid=localStorage.getItem('useridd');// извлекаем id статьи
 		h1: h1texti,
 		h2: h2texti,
 		p: patexti
-    });
-       // .then((data) => {
-        //    p.textContent = data; // JSON data parsed by `response.json()` call
-      //  });
+    }).then((data) => {
+	
+     headtext.value=data.header;  //описание содержимого статьи
+	 h1text.value=data.h1;  //название статьи
+	
+	patext.value=data.p;	
+		
+		
+            
+        });
 }else{return}
 }
+
+//удалить статью
 var c = async function () {if(activate){
 var userid=localStorage.getItem('useridd');
   
     postData('DELETE','/api/users/'+userid );
 	let elem = document.getElementById(userid);
      elem.parentNode.removeChild(elem);
+	 clear();
 }else{return}	 
 }
-function clear(){  //headtext.value=null;  //описание содержимого статьи
-	 //h1text.value=null;  //название статьи
-	 //h2text.value=null; //описание фото
-	 //patext.value=null; //содержание
+function clear(){  headtext.value=null;  //описание содержимого статьи
+	 h1text.value=null;  //название статьи
+	 h2text.value=null; //описание фото
+	 patext.value=null; //содержание
 	 var img=document.querySelectorAll('img');//удаляем содержимое и обновляем страницу
 	
 	if(img[0] !==undefined) {img[0].remove();}//удаляем фото
-	//window.location.reload(); 
+	window.location.reload(); 
 
 }
 
@@ -254,15 +280,17 @@ e.stopPropagation();
 alert("сначала создайте статью ")}else{imgpost}
 }
 
-//imgcreate.addEventListener('click',imgpost);//событие отправки изображения из меню
-imgvalue.addEventListener('click',imgpost);//отправка изображения из формы
-/* imgcreate.addEventListener('click',actionpost);//событие отправки изображения из меню
-imgvalue.addEventListener('click',actionpost);//отправка изображения из формы */
- function submform(){ return inputimg.click();} //функция нажимающая на кнопку формы изображений
 
-fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
+imgvalue.addEventListener('click',imgpost);//отправка изображения из формы
+
+ function submform(e){ e.preventDefault()} //функция нажимающая на кнопку формы изображений
+
+//fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
 ///////
-function f(){const formData = new FormData(myform);
+function f(){
+	//e.preventDefault();
+	
+	const formData = new FormData(myform);
 const photos =fileElem;
 const u= fileElem.getAttribute('name');
 const uri=myform.getAttribute('action');
@@ -276,11 +304,14 @@ fetch(uri, {
 .then(result => {
   console.log('Success:', result);
   document.getElementById('myform').reset();
-  
+ imgvalue.style.display = 'none'; 
    var imgg=document.querySelectorAll('img');
 	for(let i of imgg)
 	if(i !==undefined) {i.remove();}
-  
+	
+let uid=localStorage.getItem('useridd');	
+ let j=document.getElementById(uid);console.log(j)
+	j.dataset.descr=+j.dataset.descr+1; 
 var json = result;
         var zhead = json.header;
         var zh1 = json.h1;
@@ -312,8 +343,8 @@ var json = result;
 .catch(error => {
   console.error('Error:', error);
 })}
-imgcreate.addEventListener('click',f)
-
+imgcreate.addEventListener('click',f);
+inputimg.addEventListener('click',submform);
 ////
 
 
@@ -324,9 +355,9 @@ imgcreate.addEventListener('click',f)
 
 
 
-window.onload=function(){   if(litext[0].id !==('undefined'||null))
+/* window.onload=function(){   if((litext[0].id !==('undefined'||null))||litext[0]!=='undefined')
 {localStorage.setItem('useridd',litext[0].id)}else
-localStorage.setItem('useridd',null)}
+localStorage.setItem('useridd',null)} */
 	
 	
 	

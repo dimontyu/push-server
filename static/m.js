@@ -80,7 +80,8 @@ let minutes = date.getMinutes();
 	h2text.value=nn;
 	h2text.textContent = a[0]+a[3]+a[4]+a[5]+a[6];
 	qwe()                                             //функция в main.js
-    document.getElementById('gallery').appendChild(img)
+    document.getElementById('gallery').appendChild(img);
+	imgvalue.style.display = 'block';
   }
 }
 
