@@ -7,3 +7,6 @@ npm-debug.log*
 # Dependency directories
 node_modules
 
+static/now/
+
+package-lock.json

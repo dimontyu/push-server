@@ -175,8 +175,8 @@ A.unshift(html`
 /* if(err){alert('Подпишитесь на уведомления!!!')} */
 }
 var control=localStorage.getItem('push');
-  if((pmsg!=undefined||pmsg!=null)&& control=='notif') { pmsg.addEventListener('click',function(){ return history()});}
-if((pmsg!=undefined||pmsg!=null)&& (control=='not'||control=='undefined')) { pmsg.addEventListener('click',function(){ return pushstory()});}
+  if((pmsg)&& control=='notif') { pmsg.addEventListener('click',function(){ return history()});}
+if((pmsg)&& (control=='not'||control==undefined)) { pmsg.addEventListener('click',function(){ return pushstory()});}
 
 
  
