@@ -16,8 +16,8 @@ let activate = false;
 //AWS DELETE IMG
   
 function delimgaws(e){ var tumbler =e.target.getAttribute('class');// функция удаляем выбранное изображение
-var f=e.target.getAttribute('name');
-   if(tumbler=='images'&& f== undefined){ e.target.style.width='50%';  e.target.setAttribute('name','big'); 
+let fd=e.target.getAttribute('name');
+   if(tumbler=='images'&& fd== undefined){ e.target.style.width='50%';  e.target.setAttribute('name','big'); 
    imgdelete.addEventListener('click',function(e){return imgdeletedaws(e,uid,classimg,awsurl)});
  var uid = localStorage.getItem('useridd');	
  
@@ -33,8 +33,8 @@ let bucketname=localStorage.getItem('name');
     }).then((data)=>{console.log(document.getElementById(classimg)),document.getElementById(classimg).remove()
 	let j=document.getElementById(uid);console.log(j)
 	j.dataset.descr=j.dataset.descr-1;
-	
-	
+	textB.textContent=j.dataset.descr;
+	e.target.style.display='none';
 	
 	
 	}//удаляем содержимое и обновляем страницу
@@ -286,6 +286,10 @@ imgvalue.addEventListener('click',imgpost);//отправка изображен
 
 //fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
 ///////
+const textB=document.querySelector('.textB');
+
+void function(){textB.textContent= document.getElementById(localStorage.getItem('useridd')).dataset.descr}();
+
 function f(){
 	let uid=localStorage.getItem('useridd');
 	if(uid==null||uid=='undefined'){ alert('создайте статью');return;}
@@ -313,19 +317,21 @@ fetch(uri, {
 	
  let j=document.getElementById(uid);console.log(j)
 	j.dataset.descr=+j.dataset.descr+1; 
+	textB.textContent=j.dataset.descr;
 var json = result;
         var zhead = json.header;
         var zh1 = json.h1;
 		var zh2 = json.h2;
         var zp = json.p;
-		var mimg = json.images;//изображение из aws
+		//изображение из aws
 		var aws = json.aws;
+		if(activate){
 		for (let iu of aws){
 		
-			var qui=iu.split('/');
-			var zimg=qui[qui.length-1];
+			let qui=iu.split('/');
+			let zimg=qui[qui.length-1];
 			console.log(zimg);
-		var imgaws = new Image();
+		let imgaws = new Image();
 		imgaws.src=iu;
 		imgaws.setAttribute('class','images');
 		imgaws.setAttribute('id',zimg);
@@ -333,6 +339,22 @@ var json = result;
 		imgaws.style.borderColor='blue';imgaws.style.borderWidth='5px';
 		document.querySelector('.thumb-bar').appendChild(imgaws);
 		imgaws.addEventListener('click',function(e){return delimgaws(e)})
+		}}else{
+			let iu=aws[aws.length-1];
+		let qui=iu.split('/');
+			let zimg=qui[qui.length-1];
+			console.log(zimg);
+		let imgaws = new Image();
+		imgaws.src=iu;
+		imgaws.setAttribute('class','images');
+		imgaws.setAttribute('id',zimg);
+		imgaws.setAttribute('aws',iu);
+		imgaws.style.borderColor='blue';imgaws.style.borderWidth='5px';
+		document.querySelector('.thumb-bar').appendChild(imgaws);
+		imgaws.addEventListener('click',function(e){return delimgaws(e)})	
+			
+			
+			
 		}
 		
         headtext.value = zhead;
