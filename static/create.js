@@ -317,8 +317,8 @@ fetch(uri, {
 .then(response => response.json())
 .then(result => {
   console.log('Success:', result);
-  //myform.reset();
-  
+  myform.reset();
+  h2text.value=null;
  imgvalue.style.display = 'none'; 
    var imgg=document.querySelectorAll('img');
 	for(let i of imgg)
