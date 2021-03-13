@@ -13,7 +13,7 @@ const { Blob } = require('buffer');
 //var bucketName ='dimonticad65512f-c9a1-4b1e-91bc-9d2a8d6dad4e';
 const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
-let promt=async function(req,res,x,next){
+/* let promt=async function(req,res,x,next){
 	var bucketName =(req.params.bucketname =='dima')?'dimonticad65512f-c9a1-4b1e-91bc-9d2a8d6dad4e':req.params.bucketname+'65512f-c9a1-4b1e-91bc-9d2a8d6dad4e';
 	var keyName = req.params.name+'.jpg';
 	let ss='https://'+bucketName + ".s3.amazonaws.com/" + keyName;
@@ -41,11 +41,33 @@ let promt=async function(req,res,x,next){
     console.error(err, err.stack);
 });
 	
+}
+ */
+ 
+ let promt=async function(req,res,x,next){
+	 
+	let bucketName =(req.params.bucketname =='dima')?'dimonticad65512f-c9a1-4b1e-91bc-9d2a8d6dad4e':req.params.bucketname+'65512f-c9a1-4b1e-91bc-9d2a8d6dad4e';
+	//let keyName = req.params.name+'.jpg';
+	//let ss='https://'+bucketName + ".s3.amazonaws.com/" + req.params.name+'.jpg';
+	//let uid=req.params.id;
+	//var bucketPromise = s3.createBucket({Bucket: bucketName}).promise();
 	
-// politicaws(bucketName);
-	
-	}
+  
+ let objectParams = {Bucket: bucketName, Key: (req.params.name+'.jpg'), Body: x}
+  let uploadPromise = s3.putObject(objectParams).promise();
+  
 
+      
+uploadPromise.then(	(data)=>	 {    let	newContent={"$push":{aws:('https://'+bucketName + ".s3.amazonaws.com/" + req.params.name+'.jpg')}};
+		  Content.findOneAndUpdate({ _id:(req.params.id)  }, newContent, { new: true }, function (err, user) {
+        if (err){return console.log(err);}
+       console.log(user.aws[user.aws.length-1]);  let pix=(user.aws[1]!==undefined);
+ 	politicaws(req,res,bucketName,pix,user);
+})}).catch(
+  function(err) {
+    console.error(err, err.stack);
+});
+ }
 
 
 
