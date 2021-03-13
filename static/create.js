@@ -11,6 +11,14 @@ var clsbtn = document.querySelector("#menu3");
 var imgdelete = document.querySelector("#imgdelete");
 var imgvalue = document.querySelector("#imgvalue");
 let activate = false;
+
+
+window.onload=function(){   if(litext[0])
+{localStorage.setItem('useridd',litext[0].id)}else
+	{localStorage.setItem('useridd','undefined')}}
+const textB=document.querySelector('.textB');
+void function(){textB.textContent= document.getElementById(localStorage.getItem('useridd')).dataset.descr}();
+
 //SERVER DELETE IMG
 
 //AWS DELETE IMG
@@ -235,10 +243,11 @@ let bucketname=inputimgname;
 let myformaction = myform.getAttribute('action');//установить актион формы для записи на сервер файла изображения
  //h2text.onchange 
  //сдесь происходит настройка формы отправки с полями на сервер
- const qwe  =  function(){ if(h2text.value !==undefined){localStorage.setItem('inputimgname',inputimgname+h2text.value);
- let nameImg = localStorage.getItem('inputimgname');
+ const qwe  =  function(nn){ if(nn !==undefined){//localStorage.setItem('inputimgname',inputimgname+h2text.value);
+ //let nameImg = localStorage.getItem('inputimgname');
+ let nameImg=inputimgname+nn;
  let uid=localStorage.getItem('useridd');
- fileElem.setAttribute('name',nameImg);myform.setAttribute('action',myformaction+h2text.value+'/'+uid+'/'+bucketname)//устанавливаем имя файла отпр img
+ fileElem.setAttribute('name',nameImg);myform.setAttribute('action',myformaction+nn+'/'+uid+'/'+bucketname)//устанавливаем имя файла отпр img
  }
  }
  
@@ -286,9 +295,9 @@ imgvalue.addEventListener('click',imgpost);//отправка изображен
 
 //fileElem.addEventListener('click',function(){return imgvalue.style.display = 'block';});
 ///////
-const textB=document.querySelector('.textB');
 
-void function(){textB.textContent= document.getElementById(localStorage.getItem('useridd')).dataset.descr}();
+
+
 
 function f(){
 	let uid=localStorage.getItem('useridd');
@@ -308,7 +317,8 @@ fetch(uri, {
 .then(response => response.json())
 .then(result => {
   console.log('Success:', result);
-  document.getElementById('myform').reset();
+  //myform.reset();
+  
  imgvalue.style.display = 'none'; 
    var imgg=document.querySelectorAll('img');
 	for(let i of imgg)
@@ -378,9 +388,7 @@ imgcreate.addEventListener('click',f);
 
 
 
-window.onload=function(){   if(litext[0])
-{localStorage.setItem('useridd',litext[0].id)}else
-	{localStorage.setItem('useridd','undefined')}}
+
 	
 	
 	

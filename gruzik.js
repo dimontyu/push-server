@@ -29,10 +29,10 @@ let promt=async function(req,res,x,next){
 		  let	newContent={"$push":{aws:ss}};
 		  Content.findOneAndUpdate({ _id:uid  }, newContent, { new: true }, function (err, user) {
         if (err){return console.log(err);}
-       console.log(user.aws[1]);  let pix=(user.aws[1]!==undefined);
+       console.log(user.aws[user.aws.length-1]);  let pix=(user.aws[1]!==undefined);
  	politicaws(req,res,bucketName,pix,user);
 })
-x=null;
+//x=null;
 //res.end(data);//fix
 //politicaws(req,res,bucketName);
 })
@@ -63,7 +63,7 @@ var storage = multer.memoryStorage({
 
 
 
-router.post('/uploadaws/:name/:id/:bucketname',(req, res,next) => {
+router.post('/uploadaws/:name/:id/:bucketname',(req, res) => {
 	var name=req.params.name;
 
 let upload = multer({ storage: storage }).single(name);
@@ -87,11 +87,12 @@ let upload = multer({ storage: storage }).single(name);
 		
 	
 		//res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
-	//const x=Buffer.from(req.file.buffer);
-	let x=req.file.buffer;
-	console.log(x);
+	const x=Buffer.from(req.file.buffer);
+	//let x=req.file.buffer;
+	console.log(x.length);
 	promt(req,res,x);
-	req.file.buffer=null;
+	
+	//req.file.buffer=null;
 	})
 });
 //функция устанавливающая политику корзины

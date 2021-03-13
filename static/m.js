@@ -67,7 +67,7 @@ function handleFiles(files) {
 }
 
 function previewFile(file) {
-var nn=	h2text.value ;
+//var nn=	h2text.value ;
 let date = new Date();
 let minutes = date.getMinutes();
   let reader = new FileReader()
@@ -76,10 +76,10 @@ let minutes = date.getMinutes();
     let img = document.createElement('img')
     img.src = reader.result
 	var a=file.name
-	nn =a[0]+a[3]+a[4]+a[5]+a[6]+minutes;
+	let nn =a[0]+a[3]+a[4]+a[5]+a[6]+minutes;
 	h2text.value=nn;
-	h2text.textContent = a[0]+a[3]+a[4]+a[5]+a[6];
-	qwe()                                             //функция в main.js
+	//h2text.textContent = a[0]+a[3]+a[4]+a[5]+a[6];
+	qwe(nn)                                             //функция в main.js
     document.getElementById('gallery').appendChild(img);
 	imgvalue.style.display = 'block';
   }
