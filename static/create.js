@@ -251,6 +251,14 @@ let myformaction = myform.getAttribute('action');//установить акти
  }
  }
  
+ const antiqwe  =  function(){
+ 
+ let nameImg=inputimgname;
+ 
+ fileElem.setAttribute('name',nameImg);myform.setAttribute('action',myformaction)
+ }
+ 
+ 
  
  var imgcreate = document.querySelector('#menu4');//кнопка IMGCREATE в меню
  
@@ -316,9 +324,10 @@ fetch(uri, {
 })
 .then(response => response.json())
 .then(result => {
+	antiqwe();
   console.log('Success:', result);
   myform.reset();
-  h2text.value=null;
+  
  imgvalue.style.display = 'none'; 
    var imgg=document.querySelectorAll('img');
 	for(let i of imgg)
@@ -331,7 +340,7 @@ fetch(uri, {
 var json = result;
         var zhead = json.header;
         var zh1 = json.h1;
-		var zh2 = json.h2;
+		
         var zp = json.p;
 		//изображение из aws
 		var aws = json.aws;
@@ -369,7 +378,6 @@ var json = result;
 		
         headtext.value = zhead;
 		h1text.value = zh1;
-		h2text.value = zh2;
 		patext.value = zp;  
   
   })

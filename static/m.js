@@ -76,10 +76,10 @@ let minutes = date.getMinutes();
     let img = document.createElement('img')
     img.src = reader.result
 	var a=file.name
-	let nn =a[0]+a[3]+a[4]+a[5]+a[6]+minutes;
-	h2text.value=nn;
+	h2text.value =a[0]+a[3]+a[4]+a[5]+a[6]+minutes;
+	//h2text.value=nn;
 	//h2text.textContent = a[0]+a[3]+a[4]+a[5]+a[6];
-	qwe(nn)                                             //функция в main.js
+	qwe(h2text.value)                                             //функция в main.js
     document.getElementById('gallery').appendChild(img);
 	imgvalue.style.display = 'block';
   }
