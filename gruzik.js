@@ -53,12 +53,12 @@ const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 	//var bucketPromise = s3.createBucket({Bucket: bucketName}).promise();
 	
   
- let objectParams = {Bucket: bucketName, Key: (req.params.name+'.jpg'), Body: x}
+ let objectParams = {Bucket: bucketName, Key: (req.params.name), Body: x}
   let uploadPromise = s3.putObject(objectParams).promise();
   
 
       
-uploadPromise.then(	(data)=>	 {    let	newContent={"$push":{aws:('https://'+bucketName + ".s3.amazonaws.com/" + req.params.name+'.jpg')}};
+uploadPromise.then(	(data)=>	 {    let	newContent={"$push":{aws:('https://'+bucketName + ".s3.amazonaws.com/" + req.params.name)}};
 		  Content.findOneAndUpdate({ _id:(req.params.id)  }, newContent, { new: true }, function (err, user) {
         if (err){return console.log(err);}
        console.log(user.aws[user.aws.length-1]);  let pix=(user.aws[1]!==undefined);

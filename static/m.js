@@ -62,24 +62,20 @@ function handleFiles(files) {
 
  var files = [...files]
   initializeProgress(files.length)
-  //files.forEach(uploadFile)
+  
   files.forEach(previewFile)
 }
 
 function previewFile(file) {
-//var nn=	h2text.value ;
-//let date = new Date();
-//let minutes = date.getMinutes();
+
   let reader = new FileReader();
   reader.readAsDataURL(file)
   reader.onloadend = function() {
     let img = document.createElement('img')
-    img.src = reader.result
-	var a=file.name
+    img.src = reader.result;
+	
 	h2text.value =file.name;
-	//h2text.value =a[0]+a[3]+a[4]+a[5]+a[6]+minutes;
-	//h2text.value=nn;
-	//h2text.textContent = a[0]+a[3]+a[4]+a[5]+a[6];
+	
 	qwe(h2text.value)                                             //функция в main.js
     document.getElementById('gallery').appendChild(img);
 	imgvalue.style.display = 'block';
