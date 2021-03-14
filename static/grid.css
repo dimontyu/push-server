@@ -189,13 +189,14 @@ left: 30%;
 
 	
 	 display:none; 
-	margin-top:80px;
+	/* margin-top:80px; */
 	z-index:1;
-	 max-width:70%;
+	/*  max-width:70%; */
    background-color:#008effb8;
-  position:absolute;
+  position:fixed;
   max-height:50%;
   overflow-y: scroll;
+  font-size: 1.5pc;
   }
   
  #menu {

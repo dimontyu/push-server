@@ -196,7 +196,17 @@ var userid=localStorage.getItem('useridd');// извлекаем id статьи
 var c = async function () {if(activate){
 var userid=localStorage.getItem('useridd');
   
-    postData('DELETE','/api/users/'+userid );
+    //deleteData('DELETE','/api/users/'+userid);
+	//deleteData('/api/users/'+userid);
+	var response = await fetch('/api/users/'+userid, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+				'Cache-Control': 'no-cache'
+            }
+        });
+	
+	
 	let elem = document.getElementById(userid);
      elem.parentNode.removeChild(elem);
 	 clear();
