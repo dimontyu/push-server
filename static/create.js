@@ -77,13 +77,8 @@ localStorage.setItem('useridd',uid);
             }
         });
         var json = await response.json();
-        var zhead = json.header;
-        var zh1 = json.h1;
-		var zh2 = json.h2;
-        var zp = json.p;
-		var mimg = json.images;//изображение из aws
-		var aws = json.aws;
-		for (let iu of aws){
+		
+		for (let iu of json.aws ){
 		
 			var qui=iu.split('/');
 			var zimg=qui[qui.length-1];
@@ -98,11 +93,11 @@ localStorage.setItem('useridd',uid);
 		imgaws.addEventListener('click',function(e){return delimgaws(e)})
 		}
 		
-        headtext.value = zhead;
-		h1text.value = zh1;
-		h2text.value = zh2;
-		patext.value = zp;
-       // console.log('Успех:');
+        headtext.value = json.header;
+		h1text.value = json.h1;
+		h2text.value = json.h2;
+		patext.value = json.p;
+       
 		for(let i of litext){if(i !==e.target)
 		i.setAttribute('class','menu');
 		e.target.setAttribute('class','clickmenu');}//устанавливаем 'class' для preventDefault события на кнопке выбора статьи
@@ -128,9 +123,9 @@ async function postData(xx,url = '', data = {}) {
 		
             console.log(data)
         }
-    })/* .then((data) => { clear(); }); */
+    })
 	return response.json();
-	 //let json=await response.json(); console.log('успех',json.h1); //УБРАТЬ ОБЕ КОММЕНТИРОВАНИЕ ПОСЛЕ ТЕСТА!!!
+	 //let json=await response.json(); console.log('успех',json.h1); УБРАТЬ ОБЕ КОММЕНТИРОВАНИЕ ПОСЛЕ ТЕСТА!!!
     
        
    
@@ -147,17 +142,12 @@ async function postData(xx,url = '', data = {}) {
 //создать новую статью
 var a = async function () {
 
-    usertexti = usertext.textContent;  //имя автора
-    headtexti = headtext.value;  //описание содержимого статьи
-	h1texti = h1text.value;  //название статьи
-	h2texti = h2text.value; //описание фото
-	patexti = patext.value; //содержание статьи
     postData('POST','/api/users/', {
-        name: usertexti,
-        header: headtexti,
-		h1: h1texti,
-		h2: h2texti,
-		p: patexti
+        name: usertext.textContent ,
+        header: headtext.value,
+		h1: h1text.value,
+		h2: h2text.value,
+		p: patext.value
     }).then(data => {
     window.location.reload(); 
   });
@@ -167,28 +157,20 @@ var a = async function () {
 //сохранить изменения в статье
 var b = async function () {if(activate){
 var userid=localStorage.getItem('useridd');// извлекаем id статьи из localStorage и вставляем в put запрос на сервер
-    usertexti = usertext.textContent;  //имя автора
-    headtexti = headtext.value;  //описание содержимого статьи
-	h1texti = h1text.value;  //название статьи
-	h2texti = h2text.value; //описание фото
-	patexti = patext.value; //содержание статьи
+    
     postData('PUT','/api/users/', {
 		id:userid,
-        name: usertexti,
-        header: headtexti,
-		h1: h1texti,
-		h2: h2texti,
-		p: patexti
+        name: usertext.textContent ,
+        header: headtext.value,
+		h1: h1text.value,
+		h2: h2text.value,
+		p: patext.value
     }).then((data) => {
 	
      headtext.value=data.header;  //описание содержимого статьи
 	 h1text.value=data.h1;  //название статьи
-	
-	patext.value=data.p;	
-		
-		
-            
-        });
+	 patext.value=data.p;	
+		});
 }else{return}
 }
 
@@ -196,8 +178,6 @@ var userid=localStorage.getItem('useridd');// извлекаем id статьи
 var c = async function () {if(activate){
 var userid=localStorage.getItem('useridd');
   
-    //deleteData('DELETE','/api/users/'+userid);
-	//deleteData('/api/users/'+userid);
 	var response = await fetch('/api/users/'+userid, {
             method: 'DELETE',
             headers: {
@@ -251,10 +231,9 @@ let myform = document.querySelector('.my-form');//форма
 let inputimgname = fileElem.getAttribute('name');
 let bucketname=inputimgname;
 let myformaction = myform.getAttribute('action');//установить актион формы для записи на сервер файла изображения
- //h2text.onchange 
+ 
  //сдесь происходит настройка формы отправки с полями на сервер
- const qwe  =  function(nn){ if(nn !==undefined){//localStorage.setItem('inputimgname',inputimgname+h2text.value);
- //let nameImg = localStorage.getItem('inputimgname');
+ const qwe  =  function(nn){ if(nn !==undefined){
  let nameImg=inputimgname+nn;
  let uid=localStorage.getItem('useridd');
  fileElem.setAttribute('name',nameImg);myform.setAttribute('action',myformaction+nn+'/'+uid+'/'+bucketname)//устанавливаем имя файла отпр img
@@ -275,26 +254,13 @@ let myformaction = myform.getAttribute('action');//установить акти
  var imgpost = async function subm(e) {var userid=localStorage.getItem('useridd');     if(activate&&(userid!=='undefined')){
 	 e.preventDefault();
 
-
-
-	 //отправляет изображение в статью 
-	 
-
-
- usertexti = usertext.textContent;  //имя автора
-    headtexti = headtext.value;  //описание содержимого статьи
-	h1texti = h1text.value;  //название статьи
-	h2texti = h2text.value; //описание фото
-	patexti = patext.value; //содержание статьи 
-	//nameImg = localStorage.getItem('inputimgname');//имя и путь к файлу img
-    postData('PUT','/api/images/', {
+ postData('PUT','/api/images/', {
         id: userid,
-       // images: '/'+nameImg+'.jpg',
-		        name: usertexti,
-        header: headtexti,
-		h1: h1texti,
-		h2: h2texti,
-		p: patexti
+		name:usertext.textContent,
+        header:headtext.value ,
+		h1: h1text.value,
+		h2: h2text.value,
+		p: patext.value
     }).then(function(data){return f()}); 
  
  } else{e.preventDefault();     f();}
@@ -324,7 +290,7 @@ function f(){
 	
 	const formData = new FormData(myform);
 const photos =fileElem;
-const u= fileElem.getAttribute('name');
+
 const uri=myform.getAttribute('action');
 
 
@@ -347,13 +313,9 @@ fetch(uri, {
  let j=document.getElementById(uid);console.log(j)
 	j.dataset.descr=+j.dataset.descr+1; 
 	textB.textContent=j.dataset.descr;
-var json = result;
-        var zhead = json.header;
-        var zh1 = json.h1;
-		
-        var zp = json.p;
+
 		//изображение из aws
-		var aws = json.aws;
+		var aws = result.aws;
 		if(activate){
 		for (let iu of aws){
 		
@@ -386,17 +348,16 @@ var json = result;
 			
 		}
 		
-        headtext.value = zhead;
-		h1text.value = zh1;
-		patext.value = zp;  
+        headtext.value = result.header;
+		h1text.value = result.h1;
+		patext.value = result.p;  
   
   })
 .catch(error => {
   console.error('Error:', error);
 })}}
 imgcreate.addEventListener('click',f);
-//inputimg.addEventListener('click',submform);
-////
+
 
 
 
