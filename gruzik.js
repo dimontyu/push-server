@@ -10,39 +10,10 @@ const multer = require("multer");
 const AWS = require('aws-sdk');
 const { Blob } = require('buffer');
 
-//var bucketName ='dimonticad65512f-c9a1-4b1e-91bc-9d2a8d6dad4e';
+
 const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
-/* let promt=async function(req,res,x,next){
-	var bucketName =(req.params.bucketname =='dima')?'dimonticad65512f-c9a1-4b1e-91bc-9d2a8d6dad4e':req.params.bucketname+'65512f-c9a1-4b1e-91bc-9d2a8d6dad4e';
-	var keyName = req.params.name+'.jpg';
-	let ss='https://'+bucketName + ".s3.amazonaws.com/" + keyName;
-	var uid=req.params.id;
-	var bucketPromise = s3.createBucket({Bucket: bucketName}).promise();
-	bucketPromise.then(
-  function(data){ 
-  var objectParams = {Bucket: bucketName, Key: keyName, Body: x}
-  var uploadPromise = s3.putObject(objectParams).promise();
-   uploadPromise.then(
 
-      function(data) {
-		  let	newContent={"$push":{aws:ss}};
-		  Content.findOneAndUpdate({ _id:uid  }, newContent, { new: true }, function (err, user) {
-        if (err){return console.log(err);}
-       console.log(user.aws[user.aws.length-1]);  let pix=(user.aws[1]!==undefined);
- 	politicaws(req,res,bucketName,pix,user);
-})
-//x=null;
-//res.end(data);//fix
-//politicaws(req,res,bucketName);
-})
-}).catch(
-  function(err) {
-    console.error(err, err.stack);
-});
-	
-}
- */
  
  let promt=async function(req,res,x,next){
 	 
@@ -64,7 +35,7 @@ uploadPromise.then(	(data)=>	 {    let	newContent={"$push":{aws:('https://'+buck
        console.log(user.aws[user.aws.length-1]);  let pix=(user.aws[1]!==undefined);
  	politicaws(req,res,bucketName,pix,user);
 })}).catch(
-  function(err) {
+  function(err) {var bucketPromise = s3.createBucket({Bucket: bucketName}).promise();
     console.error(err, err.stack);
 });
  }
@@ -108,13 +79,13 @@ let upload = multer({ storage: storage }).single(name);
         }
 		
 	
-		//res.send("<p  style='color:red'>OK</p><script>window.onload = function(){ return history.back()   }  </script>");
+		
 	const x=Buffer.from(req.file.buffer);
-	//let x=req.file.buffer;
+	
 	console.log(x.length);
 	promt(req,res,x);
 	
-	//req.file.buffer=null;
+	
 	})
 });
 //функция устанавливающая политику корзины

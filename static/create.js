@@ -17,7 +17,7 @@ window.onload=function(){   if(litext[0])
 {localStorage.setItem('useridd',litext[0].id)}else
 	{localStorage.setItem('useridd','undefined')}}
 const textB=document.querySelector('.textB');
-void function(){textB.textContent= document.getElementById(localStorage.getItem('useridd')).dataset.descr}();
+void function(){ (document.getElementById(localStorage.getItem('useridd')) !==null)?textB.textContent= document.getElementById(localStorage.getItem('useridd')).dataset.descr:textB.textContent='0'}();
 
 //SERVER DELETE IMG
 
