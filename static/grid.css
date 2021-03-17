@@ -116,7 +116,7 @@ width: fit-content;
 	width: auto;
 	padding:5px;
 	}
-
+#menu i{display:none;}
 
 }
 /*canvas*/
@@ -129,6 +129,7 @@ max-width:600px;
 	margin-right: auto;
 	
 	z-index: 1;
+	
 
 }
 

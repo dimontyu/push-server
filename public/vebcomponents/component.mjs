@@ -102,12 +102,13 @@ img2.onclick=function(){img2.style.display='none';}
 
   }
   let qtext=textB.textContent;
+  //стрелка в право
  function wrapperBF(){let uu=img1.src; for (let i=0;i<=(c.length-1);i++)
  {if(uu==c[i]&&c[i]!==c[c.length-1])
  return [img1.src=c[i+1],textB.textContent=i+1];
  else if(uu==c[i]&&c[i]==c[c.length-1]) [img1.src=c[0],textB.textContent='0'];
  else{img1.src='/images/cam.jpg';} }} ;
- 
+ //стрелка в лево
  function wrapperBFL(){let uu=img1.src; for (let i=0;i<=(c.length-1);i++)
  {if(uu==c[i]&&c[i]!==c[0])
  return [img1.src=c[i-1],textB.textContent=i-1]

@@ -29,13 +29,13 @@ let img=document.querySelector("img");
 let menu=document.querySelector("#menu");
 let next=document.querySelector(".next");
 let prev=document.querySelector(".prev");
-
+let close=document.querySelector("#close");
 
  
 svg.addEventListener('click',fsvg);
 menu.addEventListener('click',fnsvg);
-
-
+close.addEventListener('click',closed);
+function closed (){ return menu.style.display="none";}
 function fsvg(){
    if(menu.style.display='none') { return menu.style.display="block";}
    

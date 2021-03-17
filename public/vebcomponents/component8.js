@@ -4,7 +4,7 @@
       #int {
 		  position:fixed;
 		  display:block;
-		  background-color:blue;
+		  background-color:rgb(0 0 0 / 83%);
 		max-width:360px;
         height:300px;
 		opacity: 1;
@@ -14,8 +14,8 @@
       }
 	  #int i {
     background-color: red;
-    float:right;
-	margin-right:70px;
+   position: fixed;
+    left: 300px;
 }
 	#int h1{color:#00ffdcad;
 	font-size: 1em;
@@ -36,7 +36,8 @@ a{font-size:1em;
         
         border: 1px solid black;
         padding: 10px;
-        background: blue;
+        
+		color:#ffb100;
         border-radius: 10px;
         opacity: 1;
         transition: 0.6s all;

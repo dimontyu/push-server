@@ -39,7 +39,7 @@ let bucketname=localStorage.getItem('name');
 		id:uid,
          aws:awsurl
     }).then((data)=>{console.log(document.getElementById(classimg)),document.getElementById(classimg).remove()
-	let j=document.getElementById(uid);console.log(j)
+	let j=document.getElementById(uid);
 	j.dataset.descr=j.dataset.descr-1;
 	textB.textContent=j.dataset.descr;
 	e.target.style.display='none';
@@ -211,6 +211,9 @@ clsbtn.addEventListener('click',clear); //кнопка очистить поля
 
 let svg=document.querySelector('svg');
 let menu=document.querySelector("#menu");
+let close=document.querySelector("#close");
+close.addEventListener('click',closed);
+function closed (){ return menu.style.display="none";}
 svg.addEventListener('click',fsvg);
 menu.addEventListener('click',fnsvg);
 function fsvg(){var cc=menu.style.display;

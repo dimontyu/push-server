@@ -52,8 +52,9 @@ let prev=document.querySelector(".prev");
  
 svg.addEventListener('click',fsvg);
 menu.addEventListener('click',fnsvg);
-//svg.addEventListener('click',dravsvg);
-//function dravsvg(){localStorage.setItem('svg','block')}
+let close=document.querySelector("#close");
+close.addEventListener('click',closed);
+function closed (){ return menu.style.display="none";}
 
 function fsvg(){//var cc=menu.style.display;
    if(menu.style.display='none') { return menu.style.display="block";}
