@@ -76,7 +76,7 @@ function fnbody(){if(client > "600") return  menu.style.display="block"; }
  //динамическая часть 
  
  var litext = document.querySelectorAll('li');
- var aside=document.querySelector('aside');
+ var main=document.querySelector('main');
  
   for (let ie of litext)
 ie.onclick= async function fun(e) {
@@ -84,7 +84,7 @@ ie.onclick= async function fun(e) {
 	let targetclass = e.target.getAttribute('class');
 	if (targetclass == 'clickmenu'){ return e.preventDefault();
             } else{
-				 var imgg=aside.querySelectorAll('img');
+				 var imgg=main.querySelectorAll('img');
 	for(let i of imgg)
 	if(i !==undefined&& i.className !=='displayed-img') {i.remove();}
 var uid = e.target.getAttribute('id');  //устанавливаем в локалсторадже id пользователя статьи
@@ -193,5 +193,4 @@ kill='true'
   // Log install to analytics
   console.log('INSTALL: Success');
 });
-
 

@@ -6,6 +6,7 @@ const pushWrapper = document.querySelector('.push-wrapper');
 const pushButton = document.querySelector('.push-button');
 const btn = document.querySelector('.btn');
 const inp = document.querySelector('#in');
+const nome = document.querySelector('#nome');
 const bbody = document.querySelector('body');
 
 let hasSubscription = false;
@@ -45,9 +46,11 @@ function updatePushButton() {
     if (hasSubscription) {
         pushButton.textContent = `Отключить уведомления`;
 		localStorage.setItem('push','notif');
+		nome.textContent='вы подписаны';
     } else {
         pushButton.textContent = `Подписаться на уведомления`;
 		localStorage.setItem('push','not');
+		nome.textContent='вы не подписаны';
     }
 }
 

@@ -63,7 +63,7 @@
             background-color: rgba(207, 232, 220, 0.52);
             border: 2px solid rgb(79,185,227);
         }
-        aside {
+        main {
             border-right: 5px solid #999;
         }
 		header {
@@ -79,7 +79,7 @@ background-color: rgba(207, 232, 220, 0.52);
 font-size:20px;
 }
 
-aside {
+main {
   grid-column: 1;
   grid-row: 2;
 }
@@ -201,7 +201,7 @@ left: 30%;
   }
   
  #menu {
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-name: slidein;
 }
 
@@ -233,7 +233,7 @@ article {
 font-size:17px;
 }
 
-aside {
+main {
   grid-column: 1;
   grid-row: 2;
 }
@@ -491,4 +491,23 @@ position: relative;
     top: -10px;
 	
 	
+}
+#inform:target{
+display:flex;
+max-width:70%;
+z-index:3;
+}
+
+#inform{
+display:none;
+color:rgb(0 0 0 / 83%);
+width:fit-content;
+background-color:#ffffcc;
+position:fixed;
+top:150px;
+}
+.closeinfo{
+height: fit-content;	
+	background-color:black;
+font-size: 1.5em;
 }

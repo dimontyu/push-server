@@ -33,7 +33,7 @@
 <span id="name" name="user_name" tabindex="0" data-descr="ваш юсернейм при регистрации">
 
 </span>
-<span id="nome" tabindex="0" data-descr="показатель подписаны ли вы">подписка</span>
+<span id="nome" tabindex="0" data-descr="показатель подписаны ли вы на PUSH">подписка</span>
 </div>
  div(class='push-wrapper hidden')
       button(class='push-button')
@@ -42,6 +42,7 @@
 <a class="next" onclick="nnext(1)">&#10095;</a>
 <a class="prev" onclick="pprev(-1)">&#10094;</a> 
 <div id="menu"><i id='close'>close</i>
+<p id="menu00" class="menu"><a href="#inform" style='text-decoration:none'>справка</a></p>
 <p id='pmsg' class="menu">messages</p>
 <p class="menu"><a href="/">Page 1 </a></p>
 <p id="menu1"class="menu" data-descr="для установки приложения нажмите на кнопку">INSTALL</p><p  class="menu"><a href="/admin" style='text-decoration:none'>Create PUSH</a></p><p class="menu"><a href="/indexdb/index1.html">FotoNotepad</a></p> <p class="menu"><a href="/creator/#{user}">Create page</a> </p>
@@ -57,7 +58,7 @@
 
                
 </article>
-<aside><h2 id="h2a">Моё фото</h2>
+<main><h2 id="h2a">Моё фото</h2>
 <div class="full-img">
 <img class="displayed-img" src="/maskable_icon.png" alt='avatar'  width="350px;">
 <div class="overlay"></div>
@@ -67,7 +68,8 @@
 <div class="thumb-bar">
 
 
-</div>  </aside>
+</div>  </main>
+<span id='inform'><a href="#" class="closeinfo">❌</a><p>На этой странице вы должны подписаться на уведомления .Нажав на кнопку <b style='background-color:black;color:white'>подписаться на уведомления</b>,браузер запросит разрешение ,значит надо согласиться,после должно прийти уведомление что вы подписаны.Статус кнопки измениться на <b style='background-color:black;color:white'>отключить уведомления</b> ( при необходимости отключите уведомления ).Если в случае очистки памяти телефона или компьютера от кэша кнопка статуса уведомления покажет снова <b style='background-color:black;color:white'>[ подписаться на уведомления ]</b>,подпишитесь заново.Кнопка в меню <b style='background-color:#0000ff'>[messages]</b> история последних 10 пуш сообщений пришедших вам.Кнопка в меню <b style='background-color:#0000ff'>[ INSTALL ]</b> установит значек этого приложения на экран смартфона или компьютера.<b style='background-color:#0000ff'>[ Create PUSH ]</b> cтраница где можно отсылать сообщения другим пользователям.<b style='background-color:#0000ff'>[ FotoNotepad ]</b> страница где можно хранить фото со смартфона непосредственно локально в приложении.<b style='background-color:#0000ff'>[ Create page ]</b> страница где вы можете загружать фото и изображения и создавать свои страницы.</p></span>
  <footer><p>адрес электронной почты <strong> dima.chernyshev.1976@mail.ru</strong></p><p>гугл почта <strong>dmitrijcernysev784@gmail.com</strong> </p>
 </footer>
 </div>
