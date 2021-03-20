@@ -7,8 +7,7 @@ var bb = document.querySelector('#b');
 var body = document.querySelector('body');
 /* адрес и количество файлов images */
 
-function registrat(){return (localStorage.getItem('name')!==null)?document.querySelector('#registration').remove():'0';}
-registrat();
+
 
 
 
@@ -30,6 +29,10 @@ let menu=document.querySelector("#menu");
 let next=document.querySelector(".next");
 let prev=document.querySelector(".prev");
 let close=document.querySelector("#close");
+
+
+function registrat(){return (localStorage.getItem('name')!==null)?[document.querySelector('#registration').remove()]:[pmsg.remove(),menu1.remove()];}
+registrat();
 
  
 svg.addEventListener('click',fsvg);
