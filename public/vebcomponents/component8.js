@@ -3,19 +3,27 @@
  let ui=html`<style>
       #int {
 		  position:fixed;
-		  display:block;
+		  
 		  background-color:rgb(0 0 0 / 83%);
-		max-width:360px;
+		min-width:360px;
         height:300px;
 		opacity: 1;
 		z-index: 1;
 		overflow: auto;
 		
       }
-	  #int i {
-    background-color: red;
-   position: fixed;
+	   .mi {
+   background-color: red;
+    position: fixed;
     left: 300px;
+	top:100px;
+}
+
+ .m {
+  background-color: red;
+    position: fixed;
+    left: 300px;
+   
 }
 	#int h1{color:#00ffdcad;
 	font-size: 1em;
@@ -28,9 +36,10 @@ a{font-size:1em;
 	text-decoration:none;
 	color:white;
 	}
-	.info:hover{background:#cd66c5e0;}
+	.info:hover{background:#cd66c5e0;
+	color:black;}
       .info {
-		  display:flex;
+		 display:flex; 
         font-size: 1.1rem;
         max-width:360px;
         
@@ -62,8 +71,8 @@ transition: 0.6s all;
 
 var eu=html`<style>
  #ipt i {
-	 display:block;
-	 position:fixed;
+	
+	 
     background-color: red;
     float:right;
 	margin-right:70px;
@@ -91,7 +100,7 @@ const clickHandler = {
 
 
 return render(html`${ui}<h1>Подпишитесь на уведомления</h1>
- <i @click=${clickHandler}>close</i>
+ <i class='mi' @click=${clickHandler}>close</i>
  <img class="icon" src='/img/alt.png'> `,headerbot)
 
 
@@ -166,7 +175,7 @@ A.unshift(html`
  `);
  
  return render(html`${ui}<h1>последние сообщения</h1>
- <i @click=${clickHandler}>close</i>
+ <i class='m' @click=${clickHandler}>close</i>
  <img class="icon" src='/img/alt.png'> ${A}`,headerbot)  	}
  };
  
@@ -212,8 +221,8 @@ const clickHandler = {
  ${ui}
   
 <h1>Вам пришло сообщение от <b style="color:red">${headername}</b> </h1>
-<i @click=${clickHandler}>close</i>
-<div><i @click=${history} >history 1</i></div>
+<i class='mi' @click=${clickHandler}>close</i>
+<i class='m' @click=${history} >history 1</i>
 <span class="icon" tabindex="0">
 <img class="img1i" src='/img/alt.png'></span>
 <span class="info">${headertitle}</span>
