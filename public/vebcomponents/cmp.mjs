@@ -18,7 +18,7 @@ let items = json.aws;
  var zh1 = json.h1;
 		var zh2 = json.h2;
  var a=[];     
- for(let i of items){ a.push( html`<img  src='${i}'><p>${zh2}</p>`)	}	 return render( html`
+ for(let i of items){ a.push( html`<img  src='${i}'><p>${zh1}</p>`)	}	 return render( html`
   
     ${a}
 <div id='hui5'>

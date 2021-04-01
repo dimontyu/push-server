@@ -12,6 +12,7 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser'); 
 const jsonParser = express.json();
+var favicon = require('serve-favicon');
 var passport = require('passport');
 var session = require('express-session');
 
@@ -60,7 +61,7 @@ const gruzchik = require('./gruzik');//загрузчик картинок AWS
 
 var dev_db_url =process.env.MONGODB_URI;
 var mongoDB =  dev_db_url;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 
 /**
@@ -82,7 +83,7 @@ var options = {
 }
 
 
-
+app.use(favicon(path.join(__dirname, 'static', 'images/pic1.ico')))
 app.use("/", express.static(__dirname + '/public',options));
 app.use("/", express.static(__dirname + '/static'));
 app.use("/", express.static(__dirname + '/node_modules'));

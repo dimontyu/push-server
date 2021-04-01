@@ -10,7 +10,7 @@ for (let ie of litext){
 ie.querySelector('button').addEventListener('click',function(e){
 	
 	
- var arr=e.target.getAttribute('data-images');var myArray =arr.split(','); c=myArray; return ggg(e,c),ie.querySelector('button').setAttribute('class','clickmenu')})}
+ var arr=e.target.getAttribute('data-images');var myArray =arr.split(','); c=myArray.sort(); return ggg(e,c),ie.querySelector('button').setAttribute('class','clickmenu')})}
 
 function imas(x){return x};
 
@@ -103,17 +103,20 @@ img2.onclick=function(){img2.style.display='none';}
   }
   let qtext=textB.textContent;
   //стрелка в право
- function wrapperBF(){let uu=img1.src; for (let i=0;i<=(c.length-1);i++)
+ function wrapperBF(){ let uu=img1.src;
+ for (let i=0;i<=(c.length-1);i++)
  {if(uu==c[i]&&c[i]!==c[c.length-1])
- return [img1.src=c[i+1],textB.textContent=i+1];
+ return [img1.src&&=c[i+1],textB.textContent=i+1];
  else if(uu==c[i]&&c[i]==c[c.length-1]) [img1.src=c[0],textB.textContent='0'];
- else{img1.src='/images/cam.jpg';} }} ;
+ else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/loading.gif';} }} ;
  //стрелка в лево
- function wrapperBFL(){let uu=img1.src; for (let i=0;i<=(c.length-1);i++)
+ function wrapperBFL(){
+	 let uu=img1.src;
+	 for (let i=0;i<=(c.length-1);i++)
  {if(uu==c[i]&&c[i]!==c[0])
  return [img1.src=c[i-1],textB.textContent=i-1]
  else if(uu==c[0]) [img1.src=c[c.length-1],textB.textContent=c.length-1];
- else{img1.src='/images/cam.jpg';} }} 
+ else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/default.jpg';} }} 
   
     // Create some CSS to apply to the shadow dom
   

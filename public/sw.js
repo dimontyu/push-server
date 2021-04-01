@@ -1,5 +1,6 @@
 "use strict";
 importScripts('/indexdbrequest.js'); //<- storePush(notificationData )записываеt push-message  в INDEXDB
+//importScripts('/navigator.js');
 const VERSION = 'v0.0.5';
 
 
@@ -12,7 +13,7 @@ self.addEventListener('install', function (event) {
 				'/grom',
 				'/manifest.json',
 				'/grid.css',
-				
+				'/images1/loading.gif',
 				'images/wood.jpg',
 				'images/cam.jpg',
 				'images/pic1.ico',

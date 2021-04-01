@@ -15,7 +15,7 @@ var body = document.querySelector('body');
 
 
 
-function callback(urljson,urlimg,n){fn(urljson,urlimg,n)}//все это для для статичного просмотра из кэша
+
 var menu1=document.querySelector("#menu1");
 var menu2=document.querySelector("#menu2");
 var menu3=document.querySelector("#menu3");//
@@ -103,5 +103,19 @@ function crf(e){console.log('i am update');   navigator.serviceWorker.register('
 function crfj(e){   navigator.serviceWorker.register('sw.js').then(reg => {
 	
   // sometime later…
-  reg.unregister();console.log('i am update');
+  reg.unregister();console.log('i am unregister');
 })}
+
+
+/* if (navigator.serviceWorker) {
+
+  navigator.serviceWorker.register('sw.js');
+
+ 
+
+  navigator.serviceWorker.ready.then( registration => {
+    registration.active.postMessage("Hi service worker");
+  });
+
+}
+ */
