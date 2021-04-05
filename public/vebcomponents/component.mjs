@@ -4,15 +4,32 @@ var w=localStorage.getItem('info');
 var b=document.querySelector('#h');//create button
 var c=[];//массив для гиперссылок изображений
  var can=document.querySelector('#can');
+
+ 
+ 
+ 
+ 
 for (let ie of litext){
 		
 
 ie.querySelector('button').addEventListener('click',function(e){
 	
 	
- var arr=e.target.getAttribute('data-images');var myArray =arr.split(','); c=myArray.sort(); return ggg(e,c),ie.querySelector('button').setAttribute('class','clickmenu')})}
+ var arr=e.target.getAttribute('data-images');var myArray =arr.split(','); c=myArray.sort();
+ return ggg(e,c),
+ ie.querySelector('button').setAttribute('class','clickmenu')})}
 
 function imas(x){return x};
+
+/* function* idMaker() {
+  var index = c.length-(c.length-1);
+  while (true) 
+  yield c[index++];}
+
+
+var gen;  */
+
+
 
 
  //создаем селектор '<info-i>'
@@ -22,9 +39,10 @@ function imas(x){return x};
 	  
 	  
 	  }
-	 
-	  
-	console.log(c);
+/* gen = idMaker();	 */ 
+	
+
+	/* console.log(c); */
  
    
 //can.setAttribute('style', `opacity:0;`);
@@ -102,13 +120,37 @@ img2.onclick=function(){img2.style.display='none';}
 
   }
   let qtext=textB.textContent;
+  
+ 
+ /* function wrapperBF(){ 
+if(img1.src==c[c.length-1])return;
+ else{
+
+void [img1.src=gen.next().value,textB.textContent+=+1]
+ 
+ }
+  
+ } */
+  
+  
   //стрелка в право
  function wrapperBF(){ let uu=img1.src;
  for (let i=0;i<=(c.length-1);i++)
  {if(uu==c[i]&&c[i]!==c[c.length-1])
  return [img1.src&&=c[i+1],textB.textContent=i+1];
  else if(uu==c[i]&&c[i]==c[c.length-1]) [img1.src=c[0],textB.textContent='0'];
- else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/loading.gif';} }} ;
+ else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/loading.gif';}
+ };
+ } ;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  //стрелка в лево
  function wrapperBFL(){
 	 let uu=img1.src;
@@ -116,7 +158,9 @@ img2.onclick=function(){img2.style.display='none';}
  {if(uu==c[i]&&c[i]!==c[0])
  return [img1.src=c[i-1],textB.textContent=i-1]
  else if(uu==c[0]) [img1.src=c[c.length-1],textB.textContent=c.length-1];
- else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/default.jpg';} }} 
+ else{img1.src=(Window.onLine==false)?'/images/cam.jpg':'/images1/default.jpg';}
+ };
+ } ;
   
     // Create some CSS to apply to the shadow dom
   
@@ -153,6 +197,7 @@ shadow.appendChild(linkElem);//connect style
 	
 	
 	connectedCallback(){
+		
 		 w='info';
 	console.log(this.shadowRoot.querySelector('.img1').isConnected);	
     /* alert(this.shadowRoot.childNodes[1].childNodes[0].childNodes[0].tagName); */
@@ -164,6 +209,7 @@ ssd(root,ti);
  disconnectedCallback(){w=''; can.removeAttribute('style'); console.log('я отключен');};
  
 attributeChangedCallback(name, oldValue, newValue) {
+	
     console.log('элемент аттрибута изменился');
     //updateStyle(this); 
 	const root=this.shadowRoot;

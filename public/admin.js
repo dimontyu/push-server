@@ -7,12 +7,13 @@ let userBody = document.querySelector("#msg");
 var username = userName;
 var userbody = userBody;
 var usertitle = userTitle;
-
+var controll;
+var eventpush;
  function cb(){
 	 userName.value = '';
  userBody.value = '';
  userTitle.value = '';	
-		
+controll=false;		
 	}
 let zstor=localStorage.getItem('name');
 let z = document.querySelector("#z");
@@ -34,13 +35,11 @@ async function postData(url = '', data = {}) {
     },
    
     body: JSON.stringify(data) 
-  }).then((data) => {
-    console.log(data); // JSON data parsed by `response.json()` call
-  });
-  //return await response.data; 
+  })
+  return response.json();
 }
 
-var a = async function () {
+var a = async function () {if(controll){
     usertitle = userTitle.value;
     userbody = userBody.value;
 	username = userName.value;
@@ -51,16 +50,28 @@ var agentname = localStorage.getItem('name');
 postData('/pushevent', {
 agent: agentname,	
 id: pushid,	
-name: username,
+name: username,//id push
 title: usertitle,
 body: userbody,
-icon: '/android-chrome-192x192.png'  }),cb();
- 
+icon: '/android-chrome-192x192.png'  }).then((data) => {
+	
+    console.log(data);  //описание содержимого статьи
+	mps.textContent=(data.body);
+	mps.style.color='#00e1ff';
+	mps.style.fontSize='1.5em';
+	if(data.st=='500'){eventpush.remove() }
+	
+		}),cb();
+}else{mps.textContent='выберите пользователя в списке';
+	mps.style.color='white';
+	mps.style.fontSize='1.5em';}
 }
 btn.onclick=a;
 let pushname = document.querySelectorAll('.menu');
 for(let i of pushname)
 	i.addEventListener('click',function(e){
+		controll=true;
+		eventpush=i;
 	var pushid=e.target.getAttribute('id')
   userName.setAttribute('name',pushid);	
 	userName.value =e.target.textContent ;	
