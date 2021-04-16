@@ -53,7 +53,7 @@ const pushController = require('./controllers/push');// подписка на у
 const adminController = require('./controllers/admin');//маршрут admin.pug и отсылки PUSH уведомлений всем пользователям
 const routes = require('./routes/index'); //маршрут к creator.pug
 const routesz = require('./routes/users');//маршрутизатор post put delete get запросов к базе данных
-
+const testroutes = require('./test-router/routecontrol');//маршрутизатор post put delete get запросов к базе данных
 const gruzchik = require('./gruzik');//загрузчик картинок AWS
 /**
  * Connect to MongoDB.
@@ -86,10 +86,11 @@ var options = {
 app.use(favicon(path.join(__dirname, 'static', 'images/pic1.ico')))
 app.use("/", express.static(__dirname + '/public',options));
 app.use("/", express.static(__dirname + '/static'));
+app.use("/", express.static(__dirname + '/test-public'));
 app.use("/", express.static(__dirname + '/node_modules'));
 
 app.use('/',routes );//creator.pug
-
+app.use('/',testroutes );//TEST DOCUMENT
 
 app.use('/',routesz );//post,put,delete,get
 

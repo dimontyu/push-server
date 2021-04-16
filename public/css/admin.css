@@ -209,4 +209,8 @@ display:inline-flex;
 content:"назад";
 color:red;
 }
+.next:hover::before {
+content:"главная";
+color:red;
+}
  
