@@ -40,8 +40,8 @@ app.use('/', proutes);
 //установка открытого и закрытого ключей для пуш уведомлений
 webPush.setVapidDetails(
     'mailto:dima.chernyshev.1976@mail.ru',
-    'BCQjyPWX6qVFrel3PLw2_r_718LHt-EQSc8Y6rrCFDF-0BGHfeHioVZa3loSk56cpzHLliMNPFTqUuDzABFvIG0' ,
-    //'vq7b2vTbhro60ia20i1NqDNTDIMxgfV9ZNtuXIwOdmo'
+    '******************' ,
+    
 	process.env.VAPID_PRIVATE_KEY
 );
 
