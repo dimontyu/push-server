@@ -12,39 +12,60 @@
   a.next(href="#w-header") &#9206 
 <nav  id="w-nav">
 <ul id="w-nav-ul">
-<li><a href="" title="START">Home</a></li>
-<li><a href="/test/createbaza" title="CREATE">About</a></li>
-<li id='wl'>Contact</li>
+<li class='sl'>создать жителя</li>
+<li class='ml'>create cites database</li>
+<li class='wl'>create citizens database </li>
 </ul>
 </nav>
+<div id='headerbot'></div>
 <main id="w-main">main
   h2= 'МОСКВА'
-  | (#{users1.length}) 
+  |(#{users1.length})
   ul
     each doc,index in users1
+	
      - var c = (doc.id!==0)?citys[doc.id-1].name+' '+citys[doc.id-1].data+' '+'жителей':citys[Number(doc.id)].name
+          	 
                 li(class='menu', id= doc._id,data-d=index+1,data-ti=c) #{doc.name}
-                 span Город: #{doc.groups[0].name}
-                 span Район: #{doc.groups[1].name}
-                 span Улица: #{doc.groups[2].name}
+                 
+                 button.wla(data-id=doc._id) редактор
+                 button.wlb(data-id=doc._id,disabled) изменить
+                 span Город: 
+                   p #{doc.groups[0].name}
+                 span Район:
+                   p #{doc.groups[1].name}
+                 span Улица:
+                   p #{doc.groups[2].name}
   h2= 'ВОРОНЕЖ'
   | (#{users2.length})
   ul
     each doc,index in users2
      - var c = (doc.id!==0)?citys[doc.id-1].name+citys[doc.id-1].data+' '+'жителей':citys[Number(doc.id)].name
                 li(class='menu', id= doc._id,data-d=index+1,data-ti=c) #{doc.name}
-                 span Город: #{doc.groups[0].name}
-                 span Район: #{doc.groups[1].name}
-                 span Улица: #{doc.groups[2].name}
+                 
+                 button.wla(data-id=doc._id) редактор
+                 button.wlb(data-id=doc._id,disabled) изменить
+                 span Город:
+                   p #{doc.groups[0].name}
+                 span Район:
+                   p #{doc.groups[1].name}
+                 span Улица:
+                   p #{doc.groups[2].name}
   h2= 'САНКТ-ПЕТЕРБУРГ'
   | (#{users3.length})
   ul
     each doc,index in users3
      - var c = (doc.id!==0)?citys[doc.id-1].name+citys[doc.id-1].data+' '+'жителей':citys[Number(doc.id)].name
                 li(class='menu', id= doc._id,data-d=index+1,data-ti=c) #{doc.name}
-                 span Город: #{doc.groups[0].name}
-                 span Район: #{doc.groups[1].name}
-                 span Улица: #{doc.groups[2].name}				 
+                 			 
+                 button.wla(data-id=doc._id) редактор
+                 button.wlb(data-id=doc._id) изменить
+                 span Город:
+                   p #{doc.groups[0].name}
+                 span Район:
+                   p #{doc.groups[1].name}
+                 span Улица:
+                   p #{doc.groups[2].name}				 
 
 
 </main>
