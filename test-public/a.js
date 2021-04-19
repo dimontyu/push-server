@@ -152,7 +152,7 @@ var xdel = async function (x) {
 
 
 
-
+//делаем реплейс из span в textarea и наоборот.
 
 for(let i of wla){
 i.onclick=function(e){
@@ -226,6 +226,7 @@ let a=	e.target.parentNode.replaceChild(sp1,tspan[0]),
 	
 	}
 }
+//сдесь с помощью ,библиотеки lit-html отображаем различные кнопки
 let headerbot=document.querySelector('#headerbot');	
 sl.onclick=function(){
 let districtx,//район
