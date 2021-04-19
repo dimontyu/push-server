@@ -30,58 +30,80 @@ exports.index = function (req, res) {
 };
 
 
+//создать жителя
+exports.index_post=function (req, res) {
+	
 
+    if (!req.body) return res.sendStatus(400);
+   const a = req.body.ids;
+    const b = req.body.name;
+	const c = 1;
+    const d = {type: "city",
+        name:req.body.city 
+      };
+    const e = {
+        type: "district",
+        name:req.body.district 
+      };
+    const f = {
+        type: "street",
+        name:req.body.street 
+      } ;
+    const user = new Usser({id:a,name:b,city_id:c,groups:[d,e,f]  });
 
-
-
-
-
-
-
-
-
-// Display list of all Authors.
-/* exports.author_list = function (req, res, next) {
-
-    Author.find()
-        .sort()
-        .exec(function (err, list_authors) {
-            if (err) { return next(err); }
-            // Successful, so render.
-            res.render('a', { title: 'Author List', author_list: list_authors });
-        })
-
-}; */
-
-// Display detail page for a specific Author.
-/* exports.author_detail = function (req, res, next) {
-
-    async.parallel({
-        author: function (callback) {
-            Author.findById(req.params.id)
-                .exec(callback)
-        },
-        authors_books: function (callback) {
-            Book.find({ 'author': req.params.id }, 'title summary')
-                .exec(callback)
-        },
-    }, function (err, results) {
-        if (err) { return next(err); } // Error in API usage.
-        if (results.author == null) { // No results.
-            var err = new Error('Author not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Successful, so render.
-        res.render('author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books });
+    user.save(function (err) {
+        if (err) return console.log(err);
+		console.log('create');
+        res.send(user);
     });
-
 };
 
-// Display Author create form on GET.
-exports.author_create_get = function (req, res, next) {
-    res.render('author_form', { title: 'Create Author' });
+//удалить жителя
+exports.index_delete=function (req, res) {
+
+    const id = req.params.id;
+    Usser.findByIdAndDelete( id, function (err, user) {
+
+        if (err) return console.log(err);
+		console.log('delete');
+        res.send(user);
+    });
 };
 
-// Handle Author create on POST.
- */
+//изменить жителя
+exports.index_put= function (req, res) {
+
+    if (!req.body) return res.sendStatus(400);
+	const id=req.body.id;
+	// const a = req.body.ids;
+    const b = req.body.name;
+	//const c = req.body.city_id;
+    const d = {type: "city",
+        name:req.body.city 
+      };
+    const e = {
+        type: "district",
+        name:req.body.district 
+      };
+    const f = {
+        type: "street",
+        name:req.body.street 
+      } ;
+    //const newContent = { id:a,name:b,city_id:c,groups:[d,e,f] } ;
+	const newContent = { name:b,groups:[d,e,f] } ;
+
+    Usser.findOneAndUpdate({ _id:id  }, newContent, { new: true }, function (err, user) {
+        if (err) return console.log(err);
+		console.log('update');
+        res.send(user);
+    });
+};
+
+
+
+
+
+
+
+
+
