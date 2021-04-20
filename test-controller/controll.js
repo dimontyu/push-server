@@ -24,7 +24,7 @@ exports.index = function (req, res) {
 		
 		
 		console.log(results.citys);
-        //res.render('a', { error: err, users: results.users,citys:results.citys });
+        //забыл добавить err in pug
 		res.render('a', { error: err, users1: res1,users2: res2,users3: res3,citys:results.citys });
     });
 };
