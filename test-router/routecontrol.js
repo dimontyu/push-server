@@ -43,7 +43,7 @@ router.put("/test/user", jsonParser,controller.index_put );
 
 
 router.post('/test/createbaza', createbaza.index_cites);//загрузить файл в базу данных
-router.get('/test/createbaza2', createbaza.index_citezen);//загрузить файл в базу данных
+router.post('/test/createbaza2', createbaza.index_citezen);//загрузить файл в базу данных
 
 module.exports = router;
 
