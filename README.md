@@ -1,5 +1,5 @@
 # push-notifications простое PWA приложение созданное в качестве учебного
-доступно  в интернете  https://shielded-journey-11426.herokuapp.com/
+доступно  в интернете  https://chatroom.na4u.ru/index.html
 test задание   https://shielded-journey-11426.herokuapp.com/test
 
 Возможность общаться с помощью уведомлений с другими пользователями приложения
